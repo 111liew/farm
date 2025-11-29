@@ -61,6 +61,7 @@ const TRANSLATIONS = {
     quick_add: "Quick Add:",
     edit_task: "Edit Task",
     update: "Update",
+    username_placeholder: "Username",
     // AI DOCTOR RESULTS
     disease_rust_name: "Leaf Rust",
     disease_rust_treat: "Use Copper Fungicide. Remove infected leaves immediately.",
@@ -128,6 +129,7 @@ const TRANSLATIONS = {
     quick_add: "Tambah Cepat:",
     edit_task: "Edit Tugasan",
     update: "Kemaskini",
+    username_placeholder: "Nama Pengguna",
     // AI DOCTOR RESULTS
     disease_rust_name: "Karat Daun",
     disease_rust_treat: "Gunakan Racun Kulat Kuprum. Buang daun yang dijangkiti.",
@@ -195,6 +197,7 @@ const TRANSLATIONS = {
     quick_add: "快速添加:",
     edit_task: "编辑任务",
     update: "更新",
+    username_placeholder: "用户名",
     // AI DOCTOR RESULTS
     disease_rust_name: "叶锈病",
     disease_rust_treat: "使用铜杀菌剂。立即去除受感染的叶子。",
@@ -287,6 +290,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [lang, setLang] = useState('en'); 
   const t = (key) => TRANSLATIONS[lang][key] || key;
+  const USERNAME = t('username_placeholder'); // Dynamic Username
 
   // --- DATA ---
   const [tasks, setTasks] = useState(() => {
@@ -461,7 +465,7 @@ export default function App() {
 
     return (
       <div className="space-y-6 pb-28">
-        <div><h1 className="text-3xl font-extrabold text-emerald-900 tracking-tight">{t('welcome')} Tung!</h1><p className="text-emerald-700 font-medium opacity-80">{dateString}</p></div>
+        <div><h1 className="text-3xl font-extrabold text-emerald-900 tracking-tight">{t('welcome')} {USERNAME}!</h1><p className="text-emerald-700 font-medium opacity-80">{dateString}</p></div>
         <div className={`${waterColor} backdrop-blur-md text-white p-5 rounded-3xl shadow-lg flex items-center gap-4 animate-in slide-in-from-top-2 border border-white/20`}>
            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm"><Droplets size={24} className="animate-bounce" /></div>
            <div><h3 className="font-bold text-sm uppercase opacity-80 tracking-wider">{t('water_advice')}</h3><p className="font-semibold text-lg leading-tight">{waterAdvice}</p></div>
@@ -639,7 +643,7 @@ export default function App() {
   const renderSettings = () => (
     <div className="pb-28 pt-4">
       <div className="mb-8 px-2"><h1 className="text-3xl font-extrabold text-emerald-900">{t('settings')}</h1><p className="text-emerald-600 font-medium">Manage your preferences</p></div>
-      <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 flex items-center justify-between mb-6 cursor-pointer hover:bg-gray-50 transition-colors"><div className="flex items-center gap-5"><div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 border-4 border-white shadow-sm"><User size={32} /></div><div><h3 className="font-bold text-xl text-gray-900">User</h3><p className="text-sm text-gray-500 font-medium">{t('profile')}</p></div></div><div className="bg-gray-100 p-2 rounded-full"><ChevronRight size={20} className="text-gray-400" /></div></div>
+      <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 flex items-center justify-between mb-6 cursor-pointer hover:bg-gray-50 transition-colors"><div className="flex items-center gap-5"><div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 border-4 border-white shadow-sm"><User size={32} /></div><div><h3 className="font-bold text-xl text-gray-900">{USERNAME}</h3><p className="text-sm text-gray-500 font-medium">{t('profile')}</p></div></div><div className="bg-gray-100 p-2 rounded-full"><ChevronRight size={20} className="text-gray-400" /></div></div>
       <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 mb-8"><h4 className="text-sm font-bold text-gray-400 mb-4 flex items-center gap-2 uppercase tracking-wider ml-1"><Globe size={16}/> {t('language')}</h4><div className="flex gap-3">{['en', 'ms', 'zh'].map(l => (<button key={l} onClick={() => setLang(l)} className={`flex-1 py-3 rounded-xl text-sm font-bold transition-all shadow-sm ${lang === l ? 'bg-emerald-600 text-white shadow-emerald-500/30 scale-105' : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200'}`}>{l === 'en' ? 'English' : l === 'ms' ? 'Melayu' : '中文'}</button>))}</div></div>
       <button className="w-full bg-white border-2 border-red-100 text-red-500 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-red-50 hover:border-red-200 transition-all"><LogOut size={20} /> {t('logout')}</button>
       <div className="text-center mt-8 text-xs font-medium text-emerald-800/40">Farm Manager v2.0 Premium</div>
