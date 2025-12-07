@@ -3,7 +3,7 @@ import {
   Home, Sprout, Bell, TrendingUp, Calendar, Settings, Plus, Droplets, 
   Scissors, Trash2, Check, Wind, CloudSun, CloudRain, ChevronRight, 
   User, Shield, LogOut, Leaf, Camera, Sun, Cloud, Moon, X, Clock, 
-  Image as ImageIcon, Stethoscope, Activity, Globe, BookOpen, AlertTriangle, Edit2
+  Image as ImageIcon, Globe, Edit2, Lock, Mail, LayoutGrid
 } from 'lucide-react';
 
 // --- TRANSLATIONS 🌍 ---
@@ -22,9 +22,6 @@ const TRANSLATIONS = {
     active: "Active",
     completed: "Completed",
     add_note: "Add Note",
-    plant_doctor: "AI Plant Doctor",
-    diagnose_desc: "Scan for diseases & pests",
-    analyze: "Analyze Plant",
     upload_photo: "Upload Photo",
     save: "Save",
     profile: "Profile",
@@ -36,9 +33,6 @@ const TRANSLATIONS = {
     upcoming: "Upcoming",
     healthy: "Healthy",
     delete_confirm: "Are you sure you want to delete?",
-    doc_result: "Diagnosis Result",
-    treatment: "Recommended Treatment",
-    pest_guide: "Pest & Disease Guide",
     water_advice: "Watering Advice",
     water_ok: "Soil moisture is good. Water normally.",
     water_skip: "Rain expected! Skip watering today.",
@@ -52,29 +46,46 @@ const TRANSLATIONS = {
     current_stage: "Current Stage",
     add_new_crop: "Add New Crop",
     plant_crop_btn: "Plant Crop",
-    analyzing: "Analyzing...",
-    confidence: "Confidence",
-    symptoms: "Symptoms Detected",
-    prevention: "Prevention",
     write_note: "Write a note...",
     add_growth_note: "Add Growth Note",
     quick_add: "Quick Add:",
     edit_task: "Edit Task",
     update: "Update",
     username_placeholder: "Username",
-    // AI DOCTOR RESULTS
-    disease_rust_name: "Leaf Rust",
-    disease_rust_treat: "Use Copper Fungicide. Remove infected leaves immediately.",
-    disease_rust_symp: "Orange/brown spots on leaves.",
-    disease_aphids_name: "Aphids Infestation",
-    disease_aphids_treat: "Spray Neem Oil or soapy water every 3 days.",
-    disease_aphids_symp: "Small green bugs under leaves, sticky residue.",
-    disease_calcium_name: "Calcium Deficiency",
-    disease_calcium_treat: "Add crushed eggshells or lime to soil.",
-    disease_calcium_symp: "Curled or distorted new leaves.",
-    disease_fungus_name: "Powdery Mildew",
-    disease_fungus_treat: "Mix baking soda and water, spray on leaves.",
-    disease_fungus_symp: "White powdery spots on leaves and stems."
+    login_title: "Farm Manager",
+    login_subtitle: "Sign in to your farm",
+    email_label: "Email Address",
+    password_label: "Password",
+    name_label: "Your Name",
+    login_btn: "Sign In",
+    demo_hint: "Demo: Enter any name, email & password",
+    due: "Due",
+    kg: "kg",
+    harv: "Harv",
+    // WEATHER
+    condition_cloudy: "Mostly Cloudy",
+    condition_sunny: "Hot & Sunny",
+    condition_rain: "Rainy",
+    // QUICK ACTIONS
+    qa_water: "Water Plants",
+    qa_fert: "Fertilize",
+    qa_prune: "Pruning",
+    qa_harv: "Harvest",
+    // CROP NAMES
+    Durian: "Durian",
+    Mango: "Mango",
+    Watermelon: "Watermelon",
+    Papaya: "Papaya",
+    Banana: "Banana",
+    Apple: "Apple",
+    Orange: "Orange",
+    Pineapple: "Pineapple",
+    Strawberry: "Strawberry",
+    // STAGES
+    Seedling: "Seedling",
+    Vegetative: "Vegetative",
+    Flowering: "Flowering",
+    Fruiting: "Fruiting"
   },
   ms: {
     welcome: "Selamat Kembali",
@@ -90,9 +101,6 @@ const TRANSLATIONS = {
     active: "Aktif",
     completed: "Selesai",
     add_note: "Tambah Nota",
-    plant_doctor: "Doktor Tanaman AI",
-    diagnose_desc: "Imbas penyakit & perosak",
-    analyze: "Analisis Tanaman",
     upload_photo: "Muat Naik Foto",
     save: "Simpan",
     profile: "Profil",
@@ -104,9 +112,6 @@ const TRANSLATIONS = {
     upcoming: "Akan Datang",
     healthy: "Sihat",
     delete_confirm: "Adakah anda pasti mahu memadam?",
-    doc_result: "Keputusan Diagnosis",
-    treatment: "Rawatan Disyorkan",
-    pest_guide: "Panduan Perosak",
     water_advice: "Nasihat Penyiraman",
     water_ok: "Kelembapan tanah baik. Siram seperti biasa.",
     water_skip: "Hujan dijangka! Jangan siram hari ini.",
@@ -120,29 +125,46 @@ const TRANSLATIONS = {
     current_stage: "Peringkat Semasa",
     add_new_crop: "Tambah Tanaman Baru",
     plant_crop_btn: "Tanam",
-    analyzing: "Menganalisis...",
-    confidence: "Keyakinan",
-    symptoms: "Gejala Dikesan",
-    prevention: "Pencegahan",
     write_note: "Tulis nota...",
     add_growth_note: "Tambah Nota Tumbesaran",
     quick_add: "Tambah Cepat:",
     edit_task: "Edit Tugasan",
     update: "Kemaskini",
     username_placeholder: "Nama Pengguna",
-    // AI DOCTOR RESULTS
-    disease_rust_name: "Karat Daun",
-    disease_rust_treat: "Gunakan Racun Kulat Kuprum. Buang daun yang dijangkiti.",
-    disease_rust_symp: "Bintik oren/coklat pada daun.",
-    disease_aphids_name: "Serangan Kutu Daun",
-    disease_aphids_treat: "Sembur Minyak Nimba atau air sabun setiap 3 hari.",
-    disease_aphids_symp: "Pepijat hijau kecil di bawah daun.",
-    disease_calcium_name: "Kekurangan Kalsium",
-    disease_calcium_treat: "Tambah kulit telur hancur atau kapur ke tanah.",
-    disease_calcium_symp: "Daun baru bergulung atau herot.",
-    disease_fungus_name: "Kulapuk Berdebu",
-    disease_fungus_treat: "Campurkan soda penaik dan air, sembur pada daun.",
-    disease_fungus_symp: "Bintik putih berdebu pada daun dan batang."
+    login_title: "Pengurus Ladang",
+    login_subtitle: "Log masuk ke akaun anda",
+    email_label: "Alamat Emel",
+    password_label: "Kata Laluan",
+    name_label: "Nama Anda",
+    login_btn: "Log Masuk",
+    demo_hint: "Demo: Masukkan sebarang nama, emel & kata laluan",
+    due: "Tarikh",
+    kg: "kg",
+    harv: "Tuai",
+    // WEATHER
+    condition_cloudy: "Mendung",
+    condition_sunny: "Panas & Cerah",
+    condition_rain: "Hujan",
+    // QUICK ACTIONS
+    qa_water: "Siram Pokok",
+    qa_fert: "Baja",
+    qa_prune: "Cantas",
+    qa_harv: "Tuai",
+    // CROP NAMES
+    Durian: "Durian",
+    Mango: "Mangga",
+    Watermelon: "Tembikai",
+    Papaya: "Betik",
+    Banana: "Pisang",
+    Apple: "Epal",
+    Orange: "Oren",
+    Pineapple: "Nanas",
+    Strawberry: "Strawberi",
+    // STAGES
+    Seedling: "Anak Benih",
+    Vegetative: "Vegetatif",
+    Flowering: "Berbunga",
+    Fruiting: "Berbuah"
   },
   zh: {
     welcome: "欢迎回来",
@@ -158,9 +180,6 @@ const TRANSLATIONS = {
     active: "进行中",
     completed: "已完成",
     add_note: "添加笔记",
-    plant_doctor: "AI 植物医生",
-    diagnose_desc: "扫描病虫害",
-    analyze: "分析植物",
     upload_photo: "上传照片",
     save: "保存",
     profile: "个人资料",
@@ -172,9 +191,6 @@ const TRANSLATIONS = {
     upcoming: "即将到来",
     healthy: "健康",
     delete_confirm: "确定要删除吗？",
-    doc_result: "诊断结果",
-    treatment: "建议治疗",
-    pest_guide: "病虫害指南",
     water_advice: "浇水建议",
     water_ok: "土壤湿度良好，正常浇水。",
     water_skip: "预计有雨！今天无需浇水。",
@@ -188,29 +204,46 @@ const TRANSLATIONS = {
     current_stage: "当前阶段",
     add_new_crop: "添加新作物",
     plant_crop_btn: "种植",
-    analyzing: "分析中...",
-    confidence: "置信度",
-    symptoms: "检测到的症状",
-    prevention: "预防措施",
     write_note: "写笔记...",
     add_growth_note: "添加生长笔记",
     quick_add: "快速添加:",
     edit_task: "编辑任务",
     update: "更新",
     username_placeholder: "用户名",
-    // AI DOCTOR RESULTS
-    disease_rust_name: "叶锈病",
-    disease_rust_treat: "使用铜杀菌剂。立即去除受感染的叶子。",
-    disease_rust_symp: "叶子上有橙色/棕色斑点。",
-    disease_aphids_name: "蚜虫侵扰",
-    disease_aphids_treat: "每3天喷洒印楝油或肥皂水。",
-    disease_aphids_symp: "叶子下有小绿虫，有粘性残留物。",
-    disease_calcium_name: "缺钙",
-    disease_calcium_treat: "向土壤中添加碎蛋壳或石灰。",
-    disease_calcium_symp: "新叶卷曲或变形。",
-    disease_fungus_name: "白粉病",
-    disease_fungus_treat: "混合小苏打和水，喷洒在叶子上。",
-    disease_fungus_symp: "叶子和茎上有白色粉状斑点。"
+    login_title: "农场管家",
+    login_subtitle: "登录您的账户",
+    email_label: "电子邮件",
+    password_label: "密码",
+    name_label: "您的名字",
+    login_btn: "登录",
+    demo_hint: "演示：输入任意名字、邮箱和密码",
+    due: "截止",
+    kg: "公斤",
+    harv: "收获",
+    // WEATHER
+    condition_cloudy: "多云",
+    condition_sunny: "晴朗炎热",
+    condition_rain: "有雨",
+    // QUICK ACTIONS
+    qa_water: "浇水",
+    qa_fert: "施肥",
+    qa_prune: "修剪",
+    qa_harv: "收获",
+    // CROP NAMES
+    Durian: "榴莲",
+    Mango: "芒果",
+    Watermelon: "西瓜",
+    Papaya: "木瓜",
+    Banana: "香蕉",
+    Apple: "苹果",
+    Orange: "橙子",
+    Pineapple: "菠萝",
+    Strawberry: "草莓",
+    // STAGES
+    Seedling: "幼苗期",
+    Vegetative: "生长期",
+    Flowering: "开花期",
+    Fruiting: "结果期"
   }
 };
 
@@ -220,7 +253,7 @@ const INITIAL_TASKS = [
   { id: 2, title: 'Prune Orange Trees', location: 'Section B', time: '11:00', type: 'prune', completed: false },
 ];
 
-// --- CROP DATABASE (Chili Removed) ---
+// --- CROP DATABASE ---
 const CROP_TYPES = {
   'Durian': { days: 125, yield: 500, icon: '🍈' },
   'Mango': { days: 100, yield: 300, icon: '🥭' },
@@ -233,52 +266,61 @@ const CROP_TYPES = {
   'Strawberry': { days: 90, yield: 1, icon: '🍓' }
 };
 
-const PEST_DATA = [
-  { name: "Aphids (Kutu Daun)", crop: "All", treat: "Spray Neem Oil or soapy water." },
-  { name: "Fruit Fly (Lalat Buah)", crop: "Mango, Papaya", treat: "Wrap fruits with paper or plastic." },
-  { name: "Stem Borer (Pengorek Batang)", crop: "Durian", treat: "Inject insecticide into hole & seal." },
-  { name: "Mealybugs (Koya)", crop: "Papaya, Pineapple", treat: "Remove ants, spray white oil." }
-];
-
 const WEATHER_DATA = {
-  temp: 33, condition: 'Hot & Sunny', high: 34, low: 26, location: 'Putrajaya', 
+  temp: 33, conditionKey: 'condition_sunny', high: 34, low: 26, location: 'Putrajaya', 
   hourly: [
-    { time: 'Now', icon: <Sun size={16} />, temp: 33 },
-    { time: '3 PM', icon: <CloudSun size={16} />, temp: 32 },
-    { time: '4 PM', icon: <CloudSun size={16} />, temp: 31 },
-    { time: '5 PM', icon: <Cloud size={16} />, temp: 30 },
-    { time: '6 PM', icon: <Cloud size={16} />, temp: 29 },
+    { time: 'Now', icon: <Sun size={18} />, temp: 33 },
+    { time: '3 PM', icon: <CloudSun size={18} />, temp: 32 },
+    { time: '4 PM', icon: <CloudSun size={18} />, temp: 31 },
+    { time: '5 PM', icon: <Cloud size={18} />, temp: 30 },
+    { time: '6 PM', icon: <Cloud size={18} />, temp: 29 },
   ],
   daily: [
-    { day: 'Today', icon: <Sun size={14} />, low: 26, high: 34, rain: false },
-    { day: 'Tue', icon: <CloudSun size={14} />, low: 25, high: 32, rain: false },
-    { day: 'Wed', icon: <CloudRain size={14} />, low: 24, high: 30, rain: true },
-    { day: 'Thu', icon: <CloudRain size={14} />, low: 24, high: 29, rain: true },
-    { day: 'Fri', icon: <Cloud size={14} />, low: 25, high: 31, rain: false },
+    { day: 'Today', icon: <Sun size={16} />, low: 26, high: 34, rain: false },
+    { day: 'Tue', icon: <CloudSun size={16} />, low: 25, high: 32, rain: false },
+    { day: 'Wed', icon: <CloudRain size={16} />, low: 24, high: 30, rain: true },
+    { day: 'Thu', icon: <CloudRain size={16} />, low: 24, high: 29, rain: true },
+    { day: 'Fri', icon: <Cloud size={16} />, low: 25, high: 31, rain: false },
   ]
+};
+
+// --- Helper Functions ---
+const getDaysLeft = (harvestDateString) => {
+  const today = new Date();
+  const harvest = new Date(harvestDateString);
+  today.setHours(0, 0, 0, 0);
+  harvest.setHours(0, 0, 0, 0);
+  const diffTime = harvest.getTime() - today.getTime();
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  return diffDays > 0 ? diffDays : 0;
 };
 
 const TaskCard = ({ task, onToggle, onDelete, onEdit }) => {
   const getIcon = (type) => {
     switch(type) {
-      case 'water': return <Droplets size={18} className="text-blue-500" />;
-      case 'prune': return <Scissors size={18} className="text-purple-500" />;
-      case 'harvest': return <Leaf size={18} className="text-orange-500" />;
-      case 'fertilize': return <Sprout size={18} className="text-pink-500" />;
-      default: return <Check size={18} className="text-green-500" />;
+      case 'water': return <Droplets size={20} className="text-blue-500" />;
+      case 'prune': return <Scissors size={20} className="text-purple-500" />;
+      case 'harvest': return <Leaf size={20} className="text-orange-500" />;
+      case 'fertilize': return <Sprout size={20} className="text-emerald-500" />;
+      default: return <Check size={20} className="text-gray-500" />;
     }
   };
   return (
-    <div className="bg-white/60 backdrop-blur-md p-4 rounded-3xl shadow-sm border border-white/50 flex items-center justify-between mb-3 transition-all hover:shadow-md hover:bg-white/70">
-      <div className="flex items-center gap-4 cursor-pointer" onClick={() => onEdit && onEdit(task)}>
-        <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center">{getIcon(task.type)}</div>
-        <div><h3 className={`font-bold text-gray-800 ${task.completed ? 'line-through text-gray-400' : ''}`}>{task.title}</h3><p className="text-xs text-green-600 flex items-center gap-1 font-medium">📍 {task.location}</p></div>
+    <div className={`bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-white/50 flex items-center justify-between mb-3 transition-all ${task.completed ? 'opacity-60 grayscale' : 'hover:scale-[1.02] hover:shadow-md'}`}>
+      <div className="flex items-center gap-4 cursor-pointer flex-1" onClick={() => onEdit && onEdit(task)}>
+        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${task.completed ? 'bg-gray-200' : 'bg-white border border-gray-100 shadow-sm'}`}>
+            {getIcon(task.type)}
+        </div>
+        <div>
+            <h3 className={`font-semibold text-gray-800 ${task.completed ? 'line-through text-gray-400' : ''}`}>{task.title}</h3>
+            <p className="text-xs text-gray-600 flex items-center gap-1 mt-0.5 font-medium">📍 {task.location}</p>
+        </div>
       </div>
       <div className="flex flex-col items-end gap-2">
-        {!task.completed && <span className="text-xs font-bold bg-green-100/80 text-green-800 px-3 py-1 rounded-full">{task.time}</span>}
+        {!task.completed && <span className="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-1 rounded-full uppercase tracking-wide">{task.time}</span>}
         <div className="flex gap-2">
-           {!task.completed && <button onClick={() => onToggle(task.id)} className="p-2 rounded-xl bg-white text-gray-400 hover:text-green-600 shadow-sm transition-colors"><Check size={18} /></button>}
-           <button onClick={() => onDelete(task.id)} className="p-2 rounded-xl bg-white text-gray-400 hover:text-red-500 shadow-sm transition-colors"><Trash2 size={18} /></button>
+           <button onClick={() => onToggle(task.id)} className={`p-2 rounded-xl transition-colors ${task.completed ? 'bg-emerald-100 text-emerald-600' : 'bg-white text-gray-400 hover:bg-emerald-100 hover:text-emerald-600 shadow-sm'}`}><Check size={18} /></button>
+           <button onClick={() => onDelete(task.id)} className="p-2 rounded-xl bg-white text-gray-400 hover:bg-red-50 hover:text-red-500 shadow-sm transition-colors"><Trash2 size={18} /></button>
         </div>
       </div>
     </div>
@@ -290,7 +332,12 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [lang, setLang] = useState('en'); 
   const t = (key) => TRANSLATIONS[lang][key] || key;
-  const USERNAME = t('username_placeholder'); // Dynamic Username
+  
+  // --- AUTH STATE ---
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState(''); // NEW: Name Input
+  const [userEmail, setUserEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   // --- DATA ---
   const [tasks, setTasks] = useState(() => {
@@ -299,82 +346,87 @@ export default function App() {
   const [crops, setCrops] = useState(() => {
     try { const saved = localStorage.getItem('farm_crops'); return saved ? JSON.parse(saved) : []; } catch (e) { return []; }
   });
+
+  // --- CHECK LOGIN ON LOAD ---
+  useEffect(() => {
+    const savedLogin = localStorage.getItem('farm_loggedin');
+    if (savedLogin === 'true') {
+        setIsLoggedIn(true);
+        // Load saved name or default to 'Farmer' if missing
+        setUserName(localStorage.getItem('farm_username') || 'Farmer'); 
+        setUserEmail(localStorage.getItem('farm_email') || '');
+    }
+  }, []);
   
   useEffect(() => { localStorage.setItem('farm_tasks', JSON.stringify(tasks)); }, [tasks]);
   useEffect(() => { try { localStorage.setItem('farm_crops', JSON.stringify(crops)); } catch (e) { alert("Storage full! Delete old data."); } }, [crops]);
 
   const [showAddCrop, setShowAddCrop] = useState(false);
   const [showAddTask, setShowAddTask] = useState(false);
-  
-  // EDIT TASK STATE
   const [editingTask, setEditingTask] = useState(null);
   const [newTaskName, setNewTaskName] = useState('');
-  
-  const [showPestGuide, setShowPestGuide] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
-  
   const [activeCropId, setActiveCropId] = useState(null);
-  const [showDoctor, setShowDoctor] = useState(false);
-  const [doctorAnalyzing, setDoctorAnalyzing] = useState(false);
-  const [doctorResultKey, setDoctorResultKey] = useState(null); 
-
   const [noteText, setNoteText] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
-  const doctorInputRef = useRef(null);
-
   const [isCustomCrop, setIsCustomCrop] = useState(false);
   const [cropForm, setCropForm] = useState({ type: 'Durian', date: new Date().toISOString().split('T')[0], stage: 'Seedling', customName: '', customDays: 90 });
   
   const today = new Date();
-  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const dateString = today.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'ms' ? 'ms-MY' : 'zh-CN', dateOptions);
+  const dateString = today.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'ms' ? 'ms-MY' : 'zh-CN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  // --- HANDLERS ---
+  const handleLogin = (e) => {
+      e.preventDefault();
+      if (userEmail && password && userName) {
+          setIsLoggedIn(true);
+          localStorage.setItem('farm_loggedin', 'true');
+          localStorage.setItem('farm_username', userName); // Save the name!
+          localStorage.setItem('farm_email', userEmail);
+          setActiveTab('home');
+      }
+  };
+
+  const handleLogout = () => {
+      setIsLoggedIn(false);
+      localStorage.removeItem('farm_loggedin');
+      // Optional: keep username for next time or clear it
+      // localStorage.removeItem('farm_username'); 
+      setPassword('');
+      setActiveTab('home');
+  };
 
   const toggleTask = (id) => { setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t)); };
   const deleteTask = (id) => { setTasks(tasks.filter(t => t.id !== id)); };
-  
   const deleteCrop = (id) => { if (confirm(t('delete_confirm'))) { setCrops(crops.filter(c => c.id !== id)); } };
   const deleteGrowthLog = (cropId, logId) => { if (confirm(t('delete_confirm'))) { setCrops(crops.map(c => { if (c.id === cropId) { return { ...c, logs: c.logs.filter(l => l.id !== logId) }; } return c; })); } };
 
-  // --- ADD / EDIT TASK ---
   const handleTaskSubmit = (e) => {
     e.preventDefault(); 
     if (!newTaskName) return;
-
     if (editingTask) {
-        // UPDATE EXISTING TASK
         setTasks(tasks.map(t => t.id === editingTask.id ? { ...t, title: newTaskName } : t));
         setEditingTask(null);
     } else {
-        // ADD NEW TASK
         let type = 'general';
-        if (newTaskName.toLowerCase().includes('water')) type = 'water';
-        if (newTaskName.toLowerCase().includes('prune')) type = 'prune';
-        if (newTaskName.toLowerCase().includes('harvest')) type = 'harvest';
-        if (newTaskName.toLowerCase().includes('fertilize')) type = 'fertilize';
-
+        const lower = newTaskName.toLowerCase();
+        if (lower.includes('water') || lower.includes('siram') || lower.includes('浇水')) type = 'water';
+        else if (lower.includes('prune') || lower.includes('cantas') || lower.includes('修剪')) type = 'prune';
+        else if (lower.includes('harvest') || lower.includes('tuai') || lower.includes('收获')) type = 'harvest';
+        else if (lower.includes('fertilize') || lower.includes('baja') || lower.includes('施肥')) type = 'fertilize';
         setTasks([...tasks, { id: Date.now(), title: newTaskName, location: 'New Section', time: 'Now', type: type, completed: false }]);
     }
     setNewTaskName(''); 
     setShowAddTask(false);
   };
 
-  const openEditTask = (task) => {
-      setEditingTask(task);
-      setNewTaskName(task.title);
-      setShowAddTask(true);
-  };
-
-  // --- QUICK SUGGESTIONS ---
-  const addQuickTask = (text) => {
-      setNewTaskName(text);
-      // Automatically focus input or just set state
-  };
+  const openEditTask = (task) => { setEditingTask(task); setNewTaskName(task.title); setShowAddTask(true); };
+  const addQuickTask = (text) => { setNewTaskName(text); };
 
   const addCrop = (e) => {
     e.preventDefault();
     let name, days, icon;
-
     if (isCustomCrop) {
         name = cropForm.customName || "Unknown Crop";
         days = parseInt(cropForm.customDays) || 90;
@@ -385,25 +437,11 @@ export default function App() {
         days = cropInfo.days;
         icon = cropInfo.icon;
     }
-
     const plantingDate = new Date(cropForm.date);
     const harvestDate = new Date(plantingDate);
     harvestDate.setDate(plantingDate.getDate() + days); 
-
-    setCrops([...crops, {
-      id: Date.now(),
-      name: name,
-      plantedDate: cropForm.date,
-      harvestDate: harvestDate.toDateString(),
-      harvestIso: harvestDate.toISOString(),
-      stage: cropForm.stage,
-      daysToMaturity: days,
-      yield: 100,
-      logs: [] 
-    }]);
-    setShowAddCrop(false);
-    setIsCustomCrop(false);
-    setCropForm({ ...cropForm, customName: '', customDays: 90 });
+    setCrops([...crops, { id: Date.now(), name: name, plantedDate: cropForm.date, harvestDate: harvestDate.toDateString(), harvestIso: harvestDate.toISOString(), stage: cropForm.stage, daysToMaturity: days, yield: 100, logs: [] }]);
+    setShowAddCrop(false); setIsCustomCrop(false); setCropForm({ ...cropForm, customName: '', customDays: 90 });
   };
 
   const handleImageSelect = (e, setImgState) => {
@@ -420,8 +458,7 @@ export default function App() {
           canvas.width = MAX_WIDTH;
           canvas.height = img.height * scaleSize;
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.5);
-          setImgState(compressedDataUrl);
+          setImgState(canvas.toDataURL('image/jpeg', 0.5));
         };
         img.src = event.target.result;
       };
@@ -437,62 +474,126 @@ export default function App() {
     setNoteText(''); setSelectedImage(null); setActiveCropId(null); 
   };
 
-  const handleDoctorScan = (e) => {
-    handleImageSelect(e, setSelectedImage);
-    setDoctorAnalyzing(true);
-    setDoctorResultKey(null);
-    setTimeout(() => {
-        setDoctorAnalyzing(false);
-        const diseases = ['rust', 'aphids', 'calcium', 'fungus']; 
-        setDoctorResultKey(diseases[Math.floor(Math.random() * diseases.length)]);
-    }, 2000);
-  };
-
   const getDaysLeft = (harvestDateString) => {
     const today = new Date();
     const harvest = new Date(harvestDateString);
-    const diffTime = harvest - today;
+    today.setHours(0, 0, 0, 0);
+    harvest.setHours(0, 0, 0, 0);
+    const diffTime = harvest.getTime() - today.getTime();
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays > 0 ? diffDays : 0;
   };
 
+  // --- RENDER LOGIN SCREEN ---
+  if (!isLoggedIn) {
+      return (
+          <div className="min-h-screen bg-cover bg-center flex items-center justify-center p-4 relative" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1625246333195-58f2140123dd?q=80&w=3200&auto=format&fit=crop')" }}>
+              <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0"></div>
+              <div className="bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-2xl w-full max-w-sm relative z-10 animate-in fade-in zoom-in-95 duration-500">
+                  <div className="w-20 h-20 bg-teal-100 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-teal-500/20 transform -rotate-6">
+                      <Sprout size={40} className="text-teal-600" />
+                  </div>
+                  <h1 className="text-3xl font-black text-center text-gray-900 mb-1">{t('login_title')}</h1>
+                  <p className="text-center text-gray-500 mb-8 text-sm">{t('login_subtitle')}</p>
+
+                  <form onSubmit={handleLogin} className="space-y-4">
+                      <div>
+                          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 ml-1">{t('name_label')}</label>
+                          <div className="relative">
+                              <User size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                              <input type="text" required className="w-full bg-gray-50 border-0 rounded-2xl py-4 pl-12 pr-4 text-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all" placeholder="Farmer John" value={userName} onChange={(e) => setUserName(e.target.value)} />
+                          </div>
+                      </div>
+                      <div>
+                          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 ml-1">{t('email_label')}</label>
+                          <div className="relative">
+                              <Mail size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                              <input type="email" required className="w-full bg-gray-50 border-0 rounded-2xl py-4 pl-12 pr-4 text-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all" placeholder="farmer@mail.com" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
+                          </div>
+                      </div>
+                      <div>
+                          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 ml-1">{t('password_label')}</label>
+                          <div className="relative">
+                              <Lock size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                              <input type="password" required className="w-full bg-gray-50 border-0 rounded-2xl py-4 pl-12 pr-4 text-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} />
+                          </div>
+                      </div>
+                      <button type="submit" className="w-full bg-black text-white py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-[1.02] active:scale-95 transition-all mt-4">
+                          {t('login_btn')}
+                      </button>
+                  </form>
+                  <p className="text-center text-xs text-gray-400 mt-6">{t('demo_hint')}</p>
+                  
+                  <div className="flex justify-center gap-4 mt-6 border-t border-gray-200 pt-4">
+                       {['en', 'ms', 'zh'].map(l => (
+                           <button key={l} onClick={() => setLang(l)} className={`text-xs font-bold uppercase ${lang === l ? 'text-teal-600' : 'text-gray-400'}`}>{l}</button>
+                       ))}
+                  </div>
+              </div>
+          </div>
+      )
+  }
+
+  // --- MAIN APP ---
   const renderHome = () => {
     const activeTasks = tasks.filter(t => !t.completed);
     let waterAdvice = t('water_ok');
-    let waterColor = "bg-blue-500/90";
-    if (WEATHER_DATA.temp > 32) { waterAdvice = t('water_more'); waterColor = "bg-orange-500/90"; }
-    if (WEATHER_DATA.daily[0].rain) { waterAdvice = t('water_skip'); waterColor = "bg-gray-500/90"; }
+    let waterColor = "from-cyan-400 to-blue-500";
+    if (WEATHER_DATA.temp > 32) { waterAdvice = t('water_more'); waterColor = "from-orange-400 to-red-500"; }
+    if (WEATHER_DATA.daily[0].rain) { waterAdvice = t('water_skip'); waterColor = "from-gray-400 to-slate-500"; }
 
     return (
-      <div className="space-y-6 pb-28">
-        <div><h1 className="text-3xl font-extrabold text-emerald-900 tracking-tight">{t('welcome')} {USERNAME}!</h1><p className="text-emerald-700 font-medium opacity-80">{dateString}</p></div>
-        <div className={`${waterColor} backdrop-blur-md text-white p-5 rounded-3xl shadow-lg flex items-center gap-4 animate-in slide-in-from-top-2 border border-white/20`}>
-           <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm"><Droplets size={24} className="animate-bounce" /></div>
-           <div><h3 className="font-bold text-sm uppercase opacity-80 tracking-wider">{t('water_advice')}</h3><p className="font-semibold text-lg leading-tight">{waterAdvice}</p></div>
+      <div className="space-y-6 pb-32">
+        <div className="flex justify-between items-center px-1 pt-4">
+            <div>
+                <p className="text-teal-900 text-xs font-bold uppercase tracking-wider mb-0.5">{dateString}</p>
+                <h1 className="text-3xl font-black text-gray-900 tracking-tight">{t('welcome')} <br/><span className="text-teal-600">{userName}</span>.</h1>
+            </div>
+            <div className="w-12 h-12 rounded-full bg-white/50 backdrop-blur-md border border-white shadow-lg overflow-hidden flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onClick={() => setActiveTab('settings')}>
+                <User size={24} className="text-gray-600"/>
+            </div>
         </div>
-        <div className="rounded-[2.5rem] p-6 text-white shadow-xl bg-gradient-to-br from-[#4fa8e6] to-[#2c7bb6] relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-          <div className="flex flex-col items-center mb-6 relative z-10">
-            <h2 className="text-xl font-medium drop-shadow-sm flex items-center gap-2"><span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">Putrajaya</span></h2>
-            <div className="text-7xl font-thin tracking-tighter drop-shadow-lg my-2">{WEATHER_DATA.temp}°</div>
-            <div className="text-sm font-medium bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full">{WEATHER_DATA.condition}</div>
-          </div>
-          <div className="bg-black/10 backdrop-blur-lg rounded-3xl p-4 border border-white/10 mb-4">
-             <div className="flex overflow-x-auto gap-6 pb-2 hide-scrollbar">
-               {WEATHER_DATA.hourly.map((h, i) => (
-                 <div key={i} className="flex flex-col items-center gap-2 min-w-[3rem]"><span className="text-[10px] font-bold opacity-70 uppercase tracking-wide">{h.time}</span><div className="text-white drop-shadow-md">{h.icon}</div><span className="text-sm font-bold">{h.temp}°</span></div>
-               ))}
-             </div>
-          </div>
+        
+        {/* Modern Weather Card */}
+        <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-[2.5rem] p-6 text-white shadow-xl shadow-indigo-200 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-6 opacity-20"><Sun size={80} /></div>
+            <div className="flex justify-between items-start relative z-10">
+                <div>
+                    <div className="text-5xl font-light tracking-tighter mb-1">{WEATHER_DATA.temp}°</div>
+                    <div className="text-sm font-medium opacity-90 flex items-center gap-2 uppercase tracking-wide"><CloudSun size={16}/> {t(WEATHER_DATA.conditionKey)}</div>
+                </div>
+                <div className="text-right">
+                    <div className="text-sm font-bold opacity-80">Putrajaya</div>
+                    <div className="text-xs opacity-60 mt-1 font-medium">H:{WEATHER_DATA.high}° L:{WEATHER_DATA.low}°</div>
+                </div>
+            </div>
+            <div className={`mt-6 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/10 flex items-center gap-3`}>
+                <Droplets size={20} className="text-blue-200" />
+                <p className="text-xs font-medium leading-relaxed opacity-90">{waterAdvice}</p>
+            </div>
         </div>
+
+        {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-emerald-100/50 backdrop-blur-md p-5 rounded-3xl border border-white/50 flex flex-col items-center justify-center text-center gap-2 hover:bg-emerald-100/80 transition-colors"><div className="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-lg shadow-emerald-500/30"><Sprout size={24} /></div><div><div className="text-3xl font-black text-emerald-900">{crops.length}</div><div className="text-xs font-bold text-emerald-700 uppercase tracking-wide">{t('active_crops')}</div></div></div>
-          <div className="bg-orange-100/50 backdrop-blur-md p-5 rounded-3xl border border-white/50 flex flex-col items-center justify-center text-center gap-2 hover:bg-orange-100/80 transition-colors"><div className="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/30"><Calendar size={24} /></div><div><div className="text-3xl font-black text-orange-900">{activeTasks.length}</div><div className="text-xs font-bold text-orange-700 uppercase tracking-wide">{t('tasks_today')}</div></div></div>
+          <div onClick={() => setActiveTab('crops')} className="bg-white/80 backdrop-blur-md p-5 rounded-[2rem] shadow-sm border border-white/40 active:scale-95 transition-transform cursor-pointer group">
+            <div className="w-12 h-12 rounded-2xl bg-teal-100 flex items-center justify-center text-teal-600 mb-3 group-hover:scale-110 transition-transform"><Sprout size={24}/></div>
+            <div className="text-3xl font-bold text-gray-800">{crops.length}</div>
+            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{t('active_crops')}</div>
+          </div>
+          <div onClick={() => setActiveTab('tasks')} className="bg-white/80 backdrop-blur-md p-5 rounded-[2rem] shadow-sm border border-white/40 active:scale-95 transition-transform cursor-pointer group">
+            <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center text-orange-600 mb-3 group-hover:scale-110 transition-transform"><Check size={24}/></div>
+            <div className="text-3xl font-bold text-gray-800">{activeTasks.length}</div>
+            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{t('tasks_today')}</div>
+          </div>
         </div>
+
         <div>
-          <h2 className="text-xl font-bold text-emerald-900 mb-4 px-2">{t('today_tasks')}</h2>
+          <div className="flex justify-between items-center mb-4 px-2">
+            <h2 className="text-lg font-bold text-gray-800">{t('today_tasks')}</h2>
+            <button onClick={() => setActiveTab('tasks')} className="text-xs font-bold text-teal-600 bg-teal-50 px-3 py-1.5 rounded-full">View All</button>
+          </div>
           {activeTasks.slice(0, 2).map(task => <TaskCard key={task.id} task={task} onToggle={toggleTask} onDelete={deleteTask} onEdit={openEditTask} />)}
-          {activeTasks.length === 0 && <div className="p-8 bg-white/50 border border-dashed border-emerald-200 rounded-3xl text-center text-emerald-600 font-medium">✨ All caught up! Great job.</div>}
+          {activeTasks.length === 0 && <div className="p-8 bg-white/40 border-2 border-dashed border-gray-200 rounded-[2rem] text-center text-gray-500 text-sm font-medium">✨ All caught up!</div>}
         </div>
       </div>
     );
@@ -502,157 +603,203 @@ export default function App() {
     const activeTasks = tasks.filter(t => !t.completed);
     const completedTasks = tasks.filter(t => t.completed);
     return (
-      <div className="pb-28 pt-4">
-        <div className="flex justify-between items-center mb-8 px-2"><div><h1 className="text-3xl font-extrabold text-emerald-900">{t('reminders')}</h1><p className="text-emerald-600 font-medium">{activeTasks.length} {t('active')}</p></div><button onClick={() => { setShowAddTask(!showAddTask); setEditingTask(null); setNewTaskName(''); }} className="w-14 h-14 bg-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-emerald-600/30 hover:scale-105 transition-transform"><Plus size={28} /></button></div>
-        {showAddTask && (
-          <form onSubmit={handleTaskSubmit} className="bg-white/80 backdrop-blur-xl p-6 rounded-[2rem] shadow-xl border border-white/50 mb-6 animate-in slide-in-from-top-4">
-            <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">{editingTask ? t('edit_task') : t('quick_add')}</h3>
-            <div className="flex gap-2 mb-3 overflow-x-auto pb-2 hide-scrollbar">
-               {['Water Plants', 'Fertilize', 'Pruning', 'Harvest'].map(s => (
-                 <button type="button" onClick={() => addQuickTask(s)} key={s} className="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap hover:bg-emerald-200">{s}</button>
-               ))}
+      <div className="pb-32 pt-6">
+        <h1 className="text-4xl font-black text-gray-900 px-2 mb-8 tracking-tight">{t('reminders')}</h1>
+        <div className="bg-white/90 backdrop-blur-xl p-6 rounded-[2.5rem] shadow-xl border border-white/60 mb-8 sticky top-4 z-20">
+            <div className="flex justify-between items-center mb-4">
+               <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">{editingTask ? t('edit_task') : t('quick_add')}</h3>
+               <button onClick={() => { setShowAddTask(!showAddTask); setEditingTask(null); setNewTaskName(''); }} className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"><Plus size={20}/></button>
             </div>
-            <div className="flex gap-3"><input type="text" placeholder="Task name..." className="flex-1 bg-gray-50 border-0 rounded-xl px-4 py-4 focus:ring-2 focus:ring-emerald-500 text-lg" value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} autoFocus /><button type="submit" className="bg-emerald-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-emerald-700">{editingTask ? t('update') : 'Add'}</button></div>
-          </form>
+            {showAddTask && (
+                <form onSubmit={handleTaskSubmit} className="animate-in slide-in-from-top-4 fade-in">
+                    <div className="flex gap-2 mb-4 overflow-x-auto pb-1 hide-scrollbar">
+                        {['qa_water', 'qa_fert', 'qa_prune', 'qa_harv'].map(k => (
+                            <button type="button" onClick={() => addQuickTask(t(k))} key={k} className="bg-gray-100 text-gray-600 text-xs font-bold px-4 py-2.5 rounded-2xl whitespace-nowrap hover:bg-gray-200 hover:text-gray-900 transition-colors">{t(k)}</button>
+                        ))}
+                    </div>
+                    <div className="flex gap-2">
+                        <input type="text" placeholder="Task name..." className="flex-1 bg-gray-50 border-0 rounded-2xl px-5 py-4 text-base font-medium focus:ring-2 focus:ring-black" value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} autoFocus />
+                        <button type="submit" className="bg-black text-white px-6 rounded-2xl font-bold text-sm shadow-md hover:bg-gray-800 transition-colors">{editingTask ? t('update') : 'Add'}</button>
+                    </div>
+                </form>
+            )}
+        </div>
+        <div className="space-y-1">
+            {activeTasks.length > 0 ? activeTasks.map(task => <TaskCard key={task.id} task={task} onToggle={toggleTask} onDelete={deleteTask} onEdit={openEditTask} />) : <div className="text-center py-16 text-gray-400 font-medium">No active tasks</div>}
+        </div>
+        {completedTasks.length > 0 && (
+            <div className="mt-10 opacity-50 hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 px-4">{t('completed')}</h3>
+                {completedTasks.map(task => <TaskCard key={task.id} task={task} onToggle={toggleTask} onDelete={deleteTask} />)}
+            </div>
         )}
-        <h3 className="text-emerald-800 font-bold mb-4 px-2 uppercase tracking-wider text-sm opacity-70">{t('active')}</h3>
-        {activeTasks.length > 0 ? activeTasks.map(task => <TaskCard key={task.id} task={task} onToggle={toggleTask} onDelete={deleteTask} onEdit={openEditTask} />) : <div className="text-center py-12 text-gray-400">No active tasks</div>}
-        <h3 className="text-emerald-800 font-bold mb-4 mt-8 px-2 uppercase tracking-wider text-sm opacity-70">{t('completed')}</h3>
-        {completedTasks.length > 0 ? completedTasks.map(task => <TaskCard key={task.id} task={task} onToggle={toggleTask} onDelete={deleteTask} />) : <div className="text-center py-4 text-gray-400 text-sm">No history yet</div>}
       </div>
     );
   };
 
   const renderCrops = () => (
-    <div className="pb-28 pt-4">
-      <div className="flex justify-between items-center mb-8 px-2"><div><h1 className="text-3xl font-extrabold text-emerald-900">{t('crops')}</h1><p className="text-emerald-600 font-medium">{crops.length} {t('active')}</p></div><button onClick={() => setShowAddCrop(true)} className="w-14 h-14 bg-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-emerald-600/30 hover:scale-105 transition-transform"><Plus size={28} /></button></div>
+    <div className="pb-32 pt-6">
+      <div className="flex justify-between items-center mb-8 px-2">
+        <h1 className="text-4xl font-black text-gray-900 tracking-tight">{t('crops')}</h1>
+        <button onClick={() => setShowAddCrop(true)} className="bg-black text-white px-6 py-3 rounded-full text-sm font-bold shadow-xl shadow-gray-300 flex items-center gap-2 hover:scale-105 transition-transform"><Plus size={18}/> {t('add_new_crop')}</button>
+      </div>
+      
       {showAddCrop && (
-        <div className="fixed inset-0 bg-emerald-900/60 flex items-end sm:items-center justify-center z-50 p-4 backdrop-blur-sm">
-          <form onSubmit={addCrop} className="bg-white w-full max-w-sm rounded-[2rem] shadow-2xl overflow-hidden animate-in slide-in-from-bottom-10 sm:zoom-in-95 duration-300">
-            <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50"><h3 className="font-bold text-xl text-emerald-900">{t('add_new_crop')}</h3><button type="button" onClick={() => setShowAddCrop(false)} className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-300"><X size={18}/></button></div>
-            <div className="p-6 space-y-5">
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">{t('select_crop_type')}</label>
-                <select className="w-full bg-gray-50 border-0 rounded-xl px-4 py-3 text-lg focus:ring-2 focus:ring-emerald-500" value={isCustomCrop ? 'custom' : cropForm.type} onChange={(e) => { if (e.target.value === 'custom') { setIsCustomCrop(true); } else { setIsCustomCrop(false); setCropForm({...cropForm, type: e.target.value}); } }}>
-                  {Object.keys(CROP_TYPES).map(type => <option key={type} value={type}>{CROP_TYPES[type].icon} {type}</option>)}
-                  <option value="custom">➕ {t('custom_crop')}</option>
-                </select>
-                {!isCustomCrop && <p className="text-xs text-green-600 mt-1">🕒 Takes approx {CROP_TYPES[cropForm.type].days} days</p>}
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50 p-4 backdrop-blur-md">
+          <form onSubmit={addCrop} className="bg-white w-full max-w-sm rounded-[2.5rem] shadow-2xl overflow-hidden animate-in slide-in-from-bottom-20 sm:zoom-in-95 duration-300">
+            <div className="p-8 border-b border-gray-100 flex justify-between items-center"><h3 className="font-bold text-2xl text-gray-900">{t('add_new_crop')}</h3><button type="button" onClick={() => setShowAddCrop(false)} className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200"><X size={20}/></button></div>
+            <div className="p-8 space-y-6">
+              <div><label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{t('select_crop_type')}</label><select className="w-full bg-gray-50 border-0 rounded-2xl px-5 py-4 text-lg font-medium focus:ring-2 focus:ring-black outline-none" value={isCustomCrop ? 'custom' : cropForm.type} onChange={(e) => { if (e.target.value === 'custom') { setIsCustomCrop(true); } else { setIsCustomCrop(false); setCropForm({...cropForm, type: e.target.value}); } }}>{Object.keys(CROP_TYPES).map(type => <option key={type} value={type}>{CROP_TYPES[type].icon} {t(type)}</option>)}<option value="custom">➕ {t('custom_crop')}</option></select></div>
+              {isCustomCrop && (<div className="space-y-4 animate-in slide-in-from-top-4"><div><label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{t('enter_crop_name')}</label><input type="text" className="w-full bg-gray-50 border-0 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-black font-medium" value={cropForm.customName} onChange={(e) => setCropForm({...cropForm, customName: e.target.value})} placeholder="e.g. Dragonfruit" /></div><div><label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{t('enter_days')}</label><input type="number" className="w-full bg-gray-50 border-0 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-black font-medium" value={cropForm.customDays} onChange={(e) => setCropForm({...cropForm, customDays: e.target.value})} /></div></div>)}
+              <div className="grid grid-cols-2 gap-4">
+                  <div><label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{t('planting_date')}</label><input type="date" required className="w-full bg-gray-50 border-0 rounded-2xl px-4 py-4 outline-none focus:ring-2 focus:ring-black text-sm font-medium" value={cropForm.date} onChange={(e) => setCropForm({...cropForm, date: e.target.value})} /></div>
+                  <div><label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{t('current_stage')}</label><select className="w-full bg-gray-50 border-0 rounded-2xl px-4 py-4 outline-none focus:ring-2 focus:ring-black text-sm font-medium" value={cropForm.stage} onChange={(e) => setCropForm({...cropForm, stage: e.target.value})}><option value="Seedling">{t('Seedling')}</option><option value="Vegetative">{t('Vegetative')}</option><option value="Flowering">{t('Flowering')}</option><option value="Fruiting">{t('Fruiting')}</option></select></div>
               </div>
-              {isCustomCrop && (<div className="space-y-4 animate-in slide-in-from-top-2"><div><label className="block text-sm font-bold text-gray-700 mb-2 ml-1">{t('enter_crop_name')}</label><input type="text" className="w-full bg-gray-50 border-0 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" value={cropForm.customName} onChange={(e) => setCropForm({...cropForm, customName: e.target.value})} placeholder="e.g. Dragonfruit" /></div><div><label className="block text-sm font-bold text-gray-700 mb-2 ml-1">{t('enter_days')}</label><input type="number" className="w-full bg-gray-50 border-0 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" value={cropForm.customDays} onChange={(e) => setCropForm({...cropForm, customDays: e.target.value})} /></div></div>)}
-              <div><label className="block text-sm font-bold text-gray-700 mb-2 ml-1">{t('planting_date')}</label><input type="date" required className="w-full bg-gray-50 border-0 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" value={cropForm.date} onChange={(e) => setCropForm({...cropForm, date: e.target.value})} /></div>
-              <div><label className="block text-sm font-bold text-gray-700 mb-2 ml-1">{t('current_stage')}</label><select className="w-full bg-gray-50 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500" value={cropForm.stage} onChange={(e) => setCropForm({...cropForm, stage: e.target.value})}><option value="Seedling">🌱 Seedling</option><option value="Vegetative">🌿 Vegetative</option><option value="Flowering">🌸 Flowering</option><option value="Fruiting">🍋 Fruiting</option></select></div>
             </div>
-            <div className="p-6 bg-gray-50 border-t border-gray-100"><button type="submit" className="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-emerald-700 active:scale-95 transition-all">{t('plant_crop_btn')}</button></div>
+            <div className="p-8 bg-gray-50 border-t border-gray-100"><button type="submit" className="w-full bg-black text-white py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-[1.02] active:scale-95 transition-all">{t('plant_crop_btn')}</button></div>
           </form>
         </div>
       )}
-      {crops.length === 0 ? (<div className="flex flex-col items-center justify-center h-[50vh] text-center opacity-60"><div className="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center mb-6"><Sprout size={48} className="text-emerald-400" /></div><p className="text-emerald-900 font-bold text-xl">No crops yet</p><p className="text-sm text-emerald-600">Start your farm journey!</p></div>) : (
-        <div className="grid gap-4">{crops.map(crop => (
-          <div key={crop.id} className="bg-white/70 backdrop-blur-md p-5 rounded-[2rem] shadow-sm border border-white/60 flex items-center justify-between hover:shadow-lg transition-all">
-            <div className="flex items-center gap-4"><div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-4xl shadow-sm border border-gray-100">{CROP_TYPES[crop.name]?.icon || '🌱'}</div><div><h3 className="font-bold text-gray-800 text-lg">{crop.name}</h3><p className="text-xs text-gray-500 flex items-center gap-1 font-medium mt-1">📅 Harvest: {crop.harvestDate}</p></div></div>
-            <div className="flex flex-col items-end gap-2"><div className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700">{crop.stage}</div><button onClick={() => deleteCrop(crop.id)} className="p-2 rounded-full bg-white text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors"><Trash2 size={18} /></button></div>
-          </div>
-        ))}</div>
+
+      {crops.length === 0 ? (<div className="flex flex-col items-center justify-center h-[50vh] text-center opacity-40"><Sprout size={80} className="text-gray-300 mb-6" /><p className="text-gray-800 font-bold text-2xl">Start your farm</p><p className="text-base text-gray-500">Add your first crop to track growth</p></div>) : (
+        <div className="grid gap-4">{crops.map(crop => {
+            const daysLeft = getDaysLeft(crop.harvestIso || crop.harvestDate);
+            const progress = 100 - (daysLeft / crop.daysToMaturity * 100);
+            const clampedProgress = Math.max(0, Math.min(100, progress));
+            
+            return (
+            <div key={crop.id} className="bg-white/80 backdrop-blur-md p-6 rounded-[2.5rem] shadow-sm border border-white/50 relative overflow-hidden group hover:shadow-lg transition-all">
+                <div className="absolute top-0 left-0 w-full h-2 bg-gray-100"><div className="h-full bg-teal-500 rounded-r-full transition-all duration-1000" style={{width: `${clampedProgress}%`}}></div></div>
+                <div className="flex justify-between items-start mb-6 pt-3">
+                    <div className="flex items-center gap-5">
+                        <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-4xl shadow-sm border border-gray-100">{CROP_TYPES[crop.name]?.icon || '🌱'}</div>
+                        <div><h3 className="font-bold text-gray-900 text-xl">{t(crop.name) || crop.name}</h3><p className="text-sm text-gray-500 font-medium mt-1">{t(crop.stage)}</p></div>
+                    </div>
+                    <button onClick={() => deleteCrop(crop.id)} className="p-3 bg-gray-50 rounded-2xl text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors"><Trash2 size={20}/></button>
+                </div>
+                <div className="flex justify-between items-end">
+                    <div className="bg-gray-100/50 px-4 py-2 rounded-xl text-xs font-bold text-gray-600 flex items-center gap-2 border border-gray-200/50"><Calendar size={14}/> {new Date(crop.harvestDate).toLocaleDateString(undefined, {month:'short', day:'numeric'})}</div>
+                    <div className="text-right"><div className="text-3xl font-black text-teal-600">{daysLeft}</div><div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">{t('days_left')}</div></div>
+                </div>
+            </div>
+        )})}</div>
       )}
     </div>
   );
 
   const renderGrowth = () => (
-    <div className="pb-28 pt-4">
-      <div className="mb-8 px-2"><h1 className="text-3xl font-extrabold text-emerald-900">{t('growth')}</h1><p className="text-emerald-600 font-medium">Track progress & notes</p></div>
-      <div className="grid grid-cols-2 gap-4 mb-8">
-        <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-3xl p-5 text-white shadow-lg shadow-blue-500/20 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition-transform h-32 border border-white/20" onClick={() => setShowDoctor(true)}>
-           <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mb-2 backdrop-blur-sm"><Stethoscope size={20}/></div><div><h3 className="font-bold text-lg leading-tight">{t('plant_doctor')}</h3><p className="text-[10px] text-blue-100 leading-tight mt-1 opacity-80">{t('diagnose_desc')}</p></div>
-        </div>
-        <div className="bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl p-5 text-white shadow-lg shadow-orange-500/20 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition-transform h-32 border border-white/20" onClick={() => setShowPestGuide(true)}>
-           <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mb-2 backdrop-blur-sm"><BookOpen size={20}/></div><div><h3 className="font-bold text-lg leading-tight">{t('pest_guide')}</h3><p className="text-[10px] text-orange-100 leading-tight mt-1 opacity-80">Common pests & fixes</p></div>
-        </div>
-      </div>
+    <div className="pb-32 pt-6">
+      <div className="mb-6 px-2"><h1 className="text-3xl font-bold text-gray-800">{t('growth')}</h1></div>
       
-      {showPestGuide && (
-        <div className="fixed inset-0 bg-emerald-900/60 flex items-end sm:items-center justify-center z-50 p-4 backdrop-blur-sm">
-          <div className="bg-white w-full max-w-sm rounded-[2rem] shadow-2xl overflow-hidden h-[70vh] flex flex-col animate-in slide-in-from-bottom-10 sm:zoom-in-95 duration-300">
-             <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50"><h3 className="font-bold text-xl text-orange-900">{t('pest_guide')}</h3><button onClick={() => setShowPestGuide(false)} className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-300"><X size={18}/></button></div>
-             <div className="p-4 overflow-y-auto flex-1 space-y-3">
-                {PEST_DATA.map((pest, i) => (
-                  <div key={i} className="border border-orange-100 rounded-2xl p-4 bg-orange-50/30 hover:bg-orange-50 transition-colors"><h4 className="font-bold text-orange-800 flex items-center gap-2 mb-1"><AlertTriangle size={18}/> {pest.name}</h4><p className="text-xs text-gray-500 mb-3 bg-white px-2 py-1 rounded-md inline-block border border-gray-100">Target: {pest.crop}</p><div className="bg-white p-3 rounded-xl text-sm text-gray-700 border border-orange-100 shadow-sm font-medium">💊 {pest.treat}</div></div>
-                ))}
-             </div>
-          </div>
+      {crops.length > 0 ? (
+        <div className="flex overflow-x-auto gap-3 pb-6 hide-scrollbar px-2 snap-x">
+            {crops.map((c, i) => (
+                <button key={c.id} onClick={() => setActiveCropId(c.id)} className={`snap-center shrink-0 px-6 py-3 rounded-full font-bold text-sm shadow-sm transition-all border ${activeCropId === c.id ? 'bg-black text-white border-black scale-105 shadow-md' : 'bg-white text-gray-600 border-gray-100 hover:border-gray-300'}`}>
+                    {CROP_TYPES[c.name]?.icon} {t(c.name) || c.name}
+                </button>
+            ))}
         </div>
-      )}
-
-      {showDoctor && (
-        <div className="fixed inset-0 bg-emerald-900/60 flex items-end sm:items-center justify-center z-50 p-4 backdrop-blur-sm">
-          <div className="bg-white w-full max-w-sm rounded-[2rem] shadow-2xl overflow-hidden animate-in slide-in-from-bottom-10 sm:zoom-in-95 duration-300">
-             <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50"><h3 className="font-bold text-xl text-indigo-900">{t('plant_doctor')}</h3><button onClick={() => {setShowDoctor(false); setDoctorResultKey(null); setSelectedImage(null)}} className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-300"><X size={18}/></button></div>
-             <div className="p-6 flex flex-col items-center text-center">
-                {!selectedImage ? (
-                   <div onClick={() => doctorInputRef.current.click()} className="w-full h-56 bg-gray-50 border-2 border-dashed border-indigo-200 rounded-3xl flex flex-col items-center justify-center text-indigo-400 cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors"><div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-3"><Camera size={32} className="text-indigo-500"/></div><span className="text-base font-bold">{t('upload_photo')}</span></div>
-                ) : (
-                   <div className="w-full h-56 rounded-3xl overflow-hidden mb-6 border border-gray-200 relative shadow-inner"><img src={selectedImage} className="w-full h-full object-cover" />{doctorAnalyzing && <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-white backdrop-blur-sm"><Activity className="animate-spin mb-3 w-10 h-10"/><span className="text-sm font-bold tracking-widest uppercase">{t('analyzing')}</span></div>}</div>
-                )}
-                <input type="file" ref={doctorInputRef} hidden accept="image/*" onChange={handleDoctorScan} />
-                {doctorResultKey && (
-                  <div className="mt-2 bg-indigo-50/80 p-5 rounded-3xl border border-indigo-100 text-left w-full animate-in fade-in slide-in-from-bottom-4">
-                    <h4 className="font-bold text-indigo-900 text-xs uppercase tracking-wider mb-1">{t('doc_result')}</h4>
-                    <p className="text-xl font-black text-red-500 mb-3 leading-tight">{t('disease_' + doctorResultKey + '_name')}</p>
-                    <div className="bg-white/60 p-3 rounded-xl mb-3"><h4 className="font-bold text-indigo-900 text-[10px] uppercase tracking-wider mb-1">{t('symptoms')}</h4><p className="text-sm text-gray-600 italic">"{t('disease_' + doctorResultKey + '_symp')}"</p></div>
-                    <div className="bg-white p-4 rounded-xl border border-indigo-100 shadow-sm"><h4 className="font-bold text-indigo-900 text-[10px] uppercase tracking-wider mb-1">{t('treatment')}</h4><p className="text-sm text-gray-800 font-bold">{t('disease_' + doctorResultKey + '_treat')}</p></div>
-                  </div>
-                )}
-             </div>
-          </div>
-        </div>
-      )}
-
+      ) : <div className="text-center py-20 text-gray-400 font-medium">Add crops to start tracking growth</div>}
+      
+      {/* ADD NOTE BUTTON */}
+      {crops.length > 0 && !activeCropId && setActiveCropId(crops[0].id)}
+      
+      {/* TIMELINE */}
       {activeCropId && (
-        <div className="fixed inset-0 bg-emerald-900/60 flex items-end sm:items-center justify-center z-50 p-4 backdrop-blur-sm">
-          <form onSubmit={addGrowthLog} className="bg-white w-full max-w-sm rounded-[2rem] shadow-2xl overflow-hidden animate-in slide-in-from-bottom-10 sm:zoom-in-95 duration-300">
-            <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50"><h3 className="font-bold text-xl text-emerald-900">{t('add_growth_note')}</h3><button type="button" onClick={() => setActiveCropId(null)} className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-300"><X size={18}/></button></div>
-            <div className="p-6"><textarea placeholder={t('write_note')} className="w-full bg-gray-50 border-0 rounded-2xl px-4 py-3 h-32 focus:ring-2 focus:ring-emerald-500 resize-none text-base" value={noteText} onChange={(e) => setNoteText(e.target.value)} autoFocus></textarea>{selectedImage && (<div className="mt-4 relative rounded-2xl overflow-hidden h-40 w-full border border-gray-200 shadow-sm"><img src={selectedImage} alt="Preview" className="w-full h-full object-cover" /><button type="button" onClick={() => setSelectedImage(null)} className="absolute top-2 right-2 bg-black/60 text-white rounded-full p-1.5 backdrop-blur-md hover:bg-red-500 transition-colors"><X size={16}/></button></div>)}<input type="file" ref={fileInputRef} hidden accept="image/*" onChange={(e) => handleImageSelect(e, setSelectedImage)} /></div>
-            <div className="p-6 bg-gray-50/50 border-t border-gray-100 flex gap-3"><button type="button" onClick={() => fileInputRef.current.click()} className="flex-1 bg-white border border-gray-200 text-gray-700 py-3.5 rounded-xl font-bold hover:bg-gray-50 flex items-center justify-center gap-2 shadow-sm"><ImageIcon size={20}/> {t('upload_photo')}</button><button type="submit" className="flex-1 bg-emerald-600 text-white py-3.5 rounded-xl font-bold shadow-lg hover:bg-emerald-700">{t('save')}</button></div>
-          </form>
-        </div>
-      )}
+        <div className="animate-in fade-in zoom-in-95 duration-300">
+            <div className="bg-white/80 backdrop-blur-md p-6 rounded-[2.5rem] shadow-sm border border-white/50 mb-10">
+                <div className="flex gap-3">
+                    <button onClick={() => fileInputRef.current.click()} className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors border border-gray-100"><ImageIcon size={22}/></button>
+                    <input type="text" placeholder={t('write_note')} className="flex-1 bg-gray-50 border border-gray-100 rounded-2xl px-5 outline-none focus:ring-2 focus:ring-black text-base transition-all" value={noteText} onChange={(e) => setNoteText(e.target.value)} />
+                    <button onClick={addGrowthLog} className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center text-white shadow-lg hover:scale-105 transition-transform"><Plus size={26}/></button>
+                </div>
+                {selectedImage && (<div className="mt-3 relative rounded-xl overflow-hidden h-32 w-full border border-gray-200"><img src={selectedImage} alt="Preview" className="w-full h-full object-cover" /><button type="button" onClick={() => setSelectedImage(null)} className="absolute top-3 right-3 bg-black/50 backdrop-blur-md text-white rounded-full p-1.5 hover:bg-red-500"><X size={16}/></button></div>)}
+                <input type="file" ref={fileInputRef} hidden accept="image/*" onChange={(e) => handleImageSelect(e, setSelectedImage)} />
+            </div>
 
-      {crops.length === 0 ? (<div className="bg-white/50 border border-dashed border-emerald-200 p-8 rounded-[2rem] text-center"><p className="text-emerald-600/60 font-medium">No crops planted yet</p></div>) : (
-        <div className="grid gap-6">{crops.map(crop => (
-           <div key={crop.id} className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
-             <div className="flex justify-between items-center mb-6 border-b border-gray-100 pb-4"><div><h3 className="font-bold text-emerald-900 text-xl">{crop.name}</h3><p className="text-xs text-gray-500 font-medium mt-1">{t('planting_date')}: {crop.plantedDate}</p></div><button onClick={() => setActiveCropId(crop.id)} className="bg-emerald-50 text-emerald-700 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-emerald-100 transition-colors border border-emerald-100"><Plus size={16}/> {t('add_note')}</button></div>
-             <div className="space-y-6 pl-2 border-l-2 border-emerald-100 ml-2">{crop.logs && crop.logs.length > 0 ? crop.logs.map((log, i) => (<div key={i} className="relative pl-6"><div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-emerald-200 border-4 border-white shadow-sm"></div><span className="text-xs font-bold text-gray-400 block mb-2 tracking-wide uppercase">{log.date}</span><div className="bg-gray-50 p-4 rounded-2xl text-sm text-gray-700 border border-gray-100 relative group shadow-sm hover:shadow-md transition-all"><div className="pr-6">{log.text}{log.image && <img src={log.image} alt="Growth Log" className="mt-3 rounded-xl w-full h-40 object-cover border border-white shadow-sm" />}</div><button onClick={() => deleteGrowthLog(crop.id, log.id)} className="absolute top-3 right-3 text-gray-300 hover:text-red-500 transition-colors p-1"><Trash2 size={16} /></button></div></div>)) : <div className="text-center text-gray-400 text-sm py-2 italic opacity-60">Start tracking your plant's journey...</div>}</div>
-           </div>
-        ))}</div>
+            <div className="space-y-8 px-4 border-l-2 border-gray-100 ml-4">
+                {crops.find(c => c.id === activeCropId)?.logs?.map((log) => (
+                    <div key={log.id} className="relative pl-6">
+                        <div className="absolute -left-[9px] top-0 w-4 h-4 bg-teal-500 rounded-full ring-4 ring-white shadow-sm"></div>
+                        <span className="text-xs font-bold text-gray-400 block mb-3 tracking-widest uppercase">{log.date}</span>
+                        <div className="bg-white p-5 rounded-[2rem] shadow-sm border border-gray-100 relative group hover:shadow-md transition-shadow">
+                            <p className="text-base text-gray-800 leading-relaxed font-medium">{log.text}</p>
+                            {log.image && <img src={log.image} className="mt-4 rounded-2xl w-full h-48 object-cover shadow-sm border border-gray-100" />}
+                            <button onClick={() => deleteGrowthLog(activeCropId, log.id)} className="absolute top-4 right-4 text-gray-300 hover:text-red-500 p-2 rounded-full hover:bg-red-50 transition-all"><Trash2 size={16}/></button>
+                        </div>
+                    </div>
+                ))}
+                {(!crops.find(c => c.id === activeCropId)?.logs?.length) && <div className="text-gray-400 text-sm italic pl-4">No notes yet. Start journaling!</div>}
+            </div>
+        </div>
       )}
     </div>
   );
 
   const renderHarvest = () => (
-    <div className="pb-28 pt-4">
-      <div className="flex justify-between items-center mb-8 px-2"><div><h1 className="text-3xl font-extrabold text-emerald-900">{t('harvest_prediction')}</h1><p className="text-emerald-600 font-medium">Smart AI Forecasts</p></div><button onClick={() => setShowCalendar(!showCalendar)} className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 shadow-sm ${showCalendar ? 'bg-emerald-600 text-white shadow-emerald-500/30' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'}`}><Calendar size={18}/> {t('calendar_view')}</button></div>
+    <div className="pb-32 pt-6">
+      <div className="flex justify-between items-center mb-8 px-2"><div><h1 className="text-4xl font-black text-gray-900 tracking-tight">{t('harvest')}</h1></div><button onClick={() => setShowCalendar(!showCalendar)} className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm ${showCalendar ? 'bg-black text-white' : 'bg-white text-gray-600 border border-gray-200'}`}>{t('calendar_view')}</button></div>
       {showCalendar ? (
-        <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 mb-6 text-center animate-in fade-in zoom-in-95"><h3 className="font-bold text-gray-800 mb-6 text-lg">{new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</h3><div className="grid grid-cols-7 gap-2 text-xs mb-3 text-gray-400 font-bold uppercase tracking-wider">{['S','M','T','W','T','F','S'].map((d,i)=><div key={i}>{d}</div>)}</div><div className="grid grid-cols-7 gap-2 text-sm font-medium text-gray-600">{[...Array(30)].map((_, i) => { const day = i + 1; const hasHarvest = crops.some(c => new Date(c.harvestDate).getDate() === day); return <div key={i} className={`h-10 w-10 flex items-center justify-center rounded-full transition-all ${hasHarvest ? 'bg-emerald-500 text-white font-bold shadow-lg shadow-emerald-500/30 scale-110' : 'hover:bg-gray-50'}`}>{day}</div> })}</div></div>
+        <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 mb-8"><h3 className="font-bold text-gray-900 mb-6 text-xl text-center">{new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</h3><div className="grid grid-cols-7 gap-3 text-center text-xs font-bold text-gray-300 mb-4 uppercase tracking-widest">{['S','M','T','W','T','F','S'].map((d,i)=><div key={i}>{d}</div>)}</div><div className="grid grid-cols-7 gap-3 text-sm font-bold text-gray-700">{[...Array(30)].map((_, i) => { const day = i + 1; const hasHarvest = crops.some(c => new Date(c.harvestDate).getDate() === day); return <div key={i} className={`aspect-square flex items-center justify-center rounded-2xl transition-all ${hasHarvest ? 'bg-teal-500 text-white shadow-lg shadow-teal-200 scale-110' : 'hover:bg-gray-50'}`}>{day}</div> })}</div></div>
       ) : (
-        <>{crops.length === 0 ? <div className="bg-white p-12 rounded-[2rem] border border-dashed border-emerald-100 text-center text-emerald-600/50 font-medium mb-6">No harvests pending</div> : (<div className="grid gap-4 mb-8">{crops.map(crop => { const daysLeft = getDaysLeft(crop.harvestIso || crop.harvestDate); return (<div key={crop.id} className="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 flex items-center justify-between hover:shadow-md transition-shadow"><div><h3 className="font-bold text-gray-800 text-lg">{crop.name}</h3><div className="flex items-center gap-1.5 text-sm text-orange-500 font-bold mt-1 bg-orange-50 px-2 py-1 rounded-lg w-fit"><Clock size={14} /><span>Due: {new Date(crop.harvestDate).toLocaleDateString(undefined, {month:'short', day:'numeric'})}</span></div></div><div className="text-right bg-emerald-50 px-4 py-2 rounded-2xl border border-emerald-100"><div className="text-2xl font-black text-emerald-600">{daysLeft}</div><div className="text-[10px] text-emerald-800 font-bold uppercase tracking-wide">{t('days_left')}</div></div></div>); })}</div>)}</>
+        <div className="grid gap-4 mb-8">
+            {crops.map(crop => {
+                 const daysLeft = getDaysLeft(crop.harvestIso || crop.harvestDate);
+                 return (
+                    <div key={crop.id} className="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-100 flex items-center justify-between hover:shadow-md transition-shadow">
+                        <div className="flex items-center gap-5">
+                            <div className={`w-16 h-16 rounded-3xl flex items-center justify-center text-3xl ${daysLeft < 30 ? 'bg-orange-50 text-orange-500' : 'bg-gray-50'}`}>{CROP_TYPES[crop.name]?.icon || '🌱'}</div>
+                            <div><h3 className="font-bold text-gray-900 text-lg">{t(crop.name) || crop.name}</h3><div className="text-xs text-gray-400 font-bold mt-1.5 uppercase tracking-wide flex items-center gap-1"><Clock size={12}/> {new Date(crop.harvestDate).toLocaleDateString(undefined, {month:'short', day:'numeric'})}</div></div>
+                        </div>
+                        <div className="text-right">
+                             <div className={`text-3xl font-black ${daysLeft < 30 ? 'text-orange-500' : 'text-gray-900'}`}>{daysLeft}</div>
+                             <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">{t('days_left')}</div>
+                        </div>
+                    </div>
+                 )
+            })}
+            {crops.length === 0 && <div className="text-center py-16 text-gray-400 font-medium">No upcoming harvests</div>}
+        </div>
       )}
-      <div className="grid grid-cols-2 gap-4 mb-6"><div className="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center justify-center gap-1"><div className="text-emerald-500 mb-1"><TrendingUp size={28} /></div><span className="text-xs font-bold text-gray-400 uppercase tracking-wide">{t('total_yield')}</span><div className="text-3xl font-black text-gray-800">{crops.reduce((acc, c) => acc + (c.yield || 0), 0)} <span className="text-sm font-medium text-gray-400">kg</span></div></div><div className="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center justify-center gap-1"><div className="text-orange-500 mb-1"><Calendar size={28} /></div><span className="text-xs font-bold text-gray-400 uppercase tracking-wide">{t('upcoming')}</span><div className="text-3xl font-black text-gray-800">{crops.length} <span className="text-sm font-medium text-gray-400">Harv</span></div></div></div>
+      <div className="grid grid-cols-2 gap-4">
+          <div className="bg-teal-900 text-white p-6 rounded-[2.5rem] flex flex-col items-center text-center justify-center relative overflow-hidden shadow-xl shadow-teal-900/20"><div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl"></div><div className="text-4xl font-black mb-1">{crops.reduce((acc, c) => acc + (c.yield || 0), 0)}</div><div className="text-xs font-bold text-teal-300 uppercase tracking-widest">{t('total_yield')} (kg)</div></div>
+          <div className="bg-white p-6 rounded-[2.5rem] border border-gray-100 flex flex-col items-center text-center justify-center shadow-sm"><div className="text-4xl font-black text-gray-900 mb-1">{crops.length}</div><div className="text-xs font-bold text-gray-400 uppercase tracking-widest">{t('upcoming')}</div></div>
+      </div>
     </div>
   );
 
-  const renderSettings = () => (
-    <div className="pb-28 pt-4">
-      <div className="mb-8 px-2"><h1 className="text-3xl font-extrabold text-emerald-900">{t('settings')}</h1><p className="text-emerald-600 font-medium">Manage your preferences</p></div>
-      <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 flex items-center justify-between mb-6 cursor-pointer hover:bg-gray-50 transition-colors"><div className="flex items-center gap-5"><div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 border-4 border-white shadow-sm"><User size={32} /></div><div><h3 className="font-bold text-xl text-gray-900">{USERNAME}</h3><p className="text-sm text-gray-500 font-medium">{t('profile')}</p></div></div><div className="bg-gray-100 p-2 rounded-full"><ChevronRight size={20} className="text-gray-400" /></div></div>
-      <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 mb-8"><h4 className="text-sm font-bold text-gray-400 mb-4 flex items-center gap-2 uppercase tracking-wider ml-1"><Globe size={16}/> {t('language')}</h4><div className="flex gap-3">{['en', 'ms', 'zh'].map(l => (<button key={l} onClick={() => setLang(l)} className={`flex-1 py-3 rounded-xl text-sm font-bold transition-all shadow-sm ${lang === l ? 'bg-emerald-600 text-white shadow-emerald-500/30 scale-105' : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200'}`}>{l === 'en' ? 'English' : l === 'ms' ? 'Melayu' : '中文'}</button>))}</div></div>
-      <button className="w-full bg-white border-2 border-red-100 text-red-500 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-red-50 hover:border-red-200 transition-all"><LogOut size={20} /> {t('logout')}</button>
-      <div className="text-center mt-8 text-xs font-medium text-emerald-800/40">Farm Manager v2.0 Premium</div>
-    </div>
-  );
+  const renderSettings = () => {
+    return (
+      <div className="pb-32 pt-6">
+        <div className="mb-8 px-2"><h1 className="text-4xl font-black text-gray-900 tracking-tight">{t('settings')}</h1></div>
+        <div className="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-100 flex items-center justify-between mb-6 cursor-pointer hover:bg-gray-50 transition-colors group">
+            <div className="flex items-center gap-5">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 border-4 border-white shadow-sm group-hover:scale-105 transition-transform"><User size={32} /></div>
+                <div><h3 className="font-bold text-xl text-gray-900">{userName}</h3><p className="text-sm text-gray-500 font-medium">{t('profile')}</p></div>
+            </div>
+            <div className="bg-gray-50 p-3 rounded-full group-hover:bg-gray-100 transition-colors"><ChevronRight size={20} className="text-gray-400" /></div>
+        </div>
+        <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 mb-10">
+            <h4 className="text-xs font-bold text-gray-400 mb-5 flex items-center gap-2 uppercase tracking-widest ml-1"><Globe size={14}/> {t('language')}</h4>
+            <div className="flex gap-3">
+                {['en', 'ms', 'zh'].map(l => (
+                    <button key={l} onClick={() => setLang(l)} className={`flex-1 py-4 rounded-2xl text-sm font-bold transition-all shadow-sm ${lang === l ? 'bg-black text-white shadow-xl scale-105' : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-100'}`}>
+                        {l === 'en' ? 'English' : l === 'ms' ? 'Melayu' : '中文'}
+                    </button>
+                ))}
+            </div>
+        </div>
+        <button onClick={handleLogout} className="w-full bg-white border-2 border-red-50 text-red-500 py-5 rounded-[2.5rem] font-bold flex items-center justify-center gap-3 hover:bg-red-50 hover:border-red-100 transition-all shadow-sm"><LogOut size={20} /> {t('logout')}</button>
+        <div className="text-center mt-12 text-xs font-medium text-gray-300">Farm Manager v3.2 Premium</div>
+      </div>
+    );
+  };
 
   return (
-    <div className="font-sans min-h-screen max-w-md mx-auto relative shadow-2xl overflow-hidden text-gray-800 bg-gradient-to-br from-lime-50 via-emerald-50 to-teal-100">
-      <div className="p-6 h-screen overflow-y-auto custom-scrollbar">
+    <div 
+      className="font-sans min-h-screen max-w-md mx-auto relative shadow-2xl overflow-hidden text-gray-800 bg-[#FAFAFA]"
+    >
+      <div className="p-6 h-screen overflow-y-auto custom-scrollbar relative z-10">
         {activeTab === 'home' && renderHome()}
         {activeTab === 'crops' && renderCrops()}
         {activeTab === 'tasks' && renderTasks()}
@@ -661,15 +808,15 @@ export default function App() {
         {activeTab === 'settings' && renderSettings()}
       </div>
       
-      {/* FLOATING GLASS NAVIGATION 🛸 */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-xs px-4">
-        <div className="bg-gray-900/85 backdrop-blur-xl rounded-[2.5rem] p-2 shadow-2xl border border-white/10 flex justify-between items-center">
-          <button onClick={() => setActiveTab('home')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'home' ? 'bg-white text-black shadow-lg scale-110' : 'text-gray-400 hover:text-white'}`}><Home size={20} strokeWidth={2.5} /></button>
-          <button onClick={() => setActiveTab('crops')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'crops' ? 'bg-white text-black shadow-lg scale-110' : 'text-gray-400 hover:text-white'}`}><Sprout size={20} strokeWidth={2.5} /></button>
-          <button onClick={() => setActiveTab('tasks')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'tasks' ? 'bg-white text-black shadow-lg scale-110' : 'text-gray-400 hover:text-white'}`}><Bell size={20} strokeWidth={2.5} /></button>
-          <button onClick={() => setActiveTab('growth')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'growth' ? 'bg-white text-black shadow-lg scale-110' : 'text-gray-400 hover:text-white'}`}><TrendingUp size={20} strokeWidth={2.5} /></button>
-          <button onClick={() => setActiveTab('harvest')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'harvest' ? 'bg-white text-black shadow-lg scale-110' : 'text-gray-400 hover:text-white'}`}><Calendar size={20} strokeWidth={2.5} /></button>
-          <button onClick={() => setActiveTab('settings')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'settings' ? 'bg-white text-black shadow-lg scale-110' : 'text-gray-400 hover:text-white'}`}><Settings size={20} strokeWidth={2.5} /></button>
+      {/* FLOATING CAPSULE NAVIGATION 🛸 */}
+      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-sm px-4">
+        <div className="bg-black/90 backdrop-blur-xl rounded-full p-2.5 shadow-2xl border border-white/10 flex justify-between items-center">
+          <button onClick={() => setActiveTab('home')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'home' ? 'bg-white text-black shadow-lg scale-105' : 'text-gray-500 hover:text-white'}`}><Home size={22} strokeWidth={2.5} /></button>
+          <button onClick={() => setActiveTab('crops')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'crops' ? 'bg-white text-black shadow-lg scale-105' : 'text-gray-500 hover:text-white'}`}><Sprout size={22} strokeWidth={2.5} /></button>
+          <button onClick={() => setActiveTab('tasks')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'tasks' ? 'bg-white text-black shadow-lg scale-105' : 'text-gray-500 hover:text-white'}`}><Bell size={22} strokeWidth={2.5} /></button>
+          <button onClick={() => setActiveTab('growth')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'growth' ? 'bg-white text-black shadow-lg scale-105' : 'text-gray-500 hover:text-white'}`}><TrendingUp size={22} strokeWidth={2.5} /></button>
+          <button onClick={() => setActiveTab('harvest')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'harvest' ? 'bg-white text-black shadow-lg scale-105' : 'text-gray-500 hover:text-white'}`}><Calendar size={22} strokeWidth={2.5} /></button>
+          <button onClick={() => setActiveTab('settings')} className={`p-4 rounded-full transition-all duration-300 ${activeTab === 'settings' ? 'bg-white text-black shadow-lg scale-105' : 'text-gray-500 hover:text-white'}`}><Settings size={22} strokeWidth={2.5} /></button>
         </div>
       </div>
     </div>
