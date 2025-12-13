@@ -3,22 +3,22 @@ import {
   Home, Sprout, Bell, TrendingUp, Calendar, Settings, Plus, Droplets, 
   Scissors, Trash2, Check, Wind, CloudSun, CloudRain, ChevronRight, ChevronDown,
   ChevronLeft, User, LogOut, Leaf, Sun, Cloud, X, Clock, 
-  Image as ImageIcon, Globe, Edit2, Lock, Mail, Tractor, MapPin, DollarSign, RefreshCw, Camera, CalendarDays, Phone, Briefcase, TrendingDown, Info, BarChart3, ArrowUpRight, Scale, Search, Tag, Award, UserCheck
+  Image as ImageIcon, Globe, Edit2, Lock, Mail, Tractor, MapPin, DollarSign, RefreshCw, Camera, CalendarDays, Phone, Briefcase, TrendingDown, Info, BarChart3, ArrowUpRight, Scale, Tag, UserCheck, Award, Search
 } from 'lucide-react';
 
 // --- STYLES ---
 const styles = `
   @keyframes slideUpFade {
-    0% { opacity: 0; transform: translateY(20px) scale(0.98); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
   }
   @keyframes growWidth {
     0% { width: 0%; }
     100% { width: var(--target-width); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
   }
   @keyframes breathe {
     0%, 100% { transform: scale(1); }
@@ -26,7 +26,6 @@ const styles = `
   }
   
   .animate-slide-up { animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-  .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
   .animate-grow-width { animation: growWidth 1s ease-out forwards; }
   .animate-breathe { animation: breathe 3s ease-in-out infinite; }
   
@@ -34,16 +33,15 @@ const styles = `
   .delay-200 { animation-delay: 200ms; opacity: 0; animation-fill-mode: forwards; }
   .delay-300 { animation-delay: 300ms; opacity: 0; animation-fill-mode: forwards; }
 
-  /* Premium High-Contrast Card (98% Opacity) */
+  /* Premium Glass Effect - HIGH OPACITY TO FIX VISIBILITY */
   .premium-card {
     background: rgba(255, 255, 255, 0.98); 
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 1);
-    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
-  /* Weather Card Gradient */
   .dark-premium-card {
     background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
     color: white;
@@ -51,12 +49,18 @@ const styles = `
     border: 1px solid rgba(255,255,255,0.1);
   }
 
-  /* Group Header */
+  /* Group Header Style */
   .group-header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.8);
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
   }
   
   .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -66,6 +70,7 @@ const styles = `
 // --- TRANSLATIONS 🌍 ---
 const TRANSLATIONS = {
   en: {
+    welcome: "Good Morning,", 
     good_morning: "Good Morning,",
     good_afternoon: "Good Afternoon,",
     good_evening: "Good Evening,",
@@ -160,6 +165,7 @@ const TRANSLATIONS = {
     grade_b: "Grade B",
     grade_c: "Grade C",
     items: "items",
+    upload_photo: "Upload Photo",
     
     condition_cloudy: "Cloudy",
     condition_sunny: "Sunny",
@@ -171,7 +177,132 @@ const TRANSLATIONS = {
     Flowering: "Flowering",
     Fruiting: "Fruiting"
   },
+  ms: {
+    welcome: "Selamat Kembali,",
+    good_morning: "Selamat Pagi,",
+    good_afternoon: "Selamat Petang,",
+    good_evening: "Selamat Malam,",
+    tasks: "Tugasan",
+    crops: "Tanaman",
+    growth: "Jurnal", 
+    harvest: "Tuai",
+    settings: "Tetapan",
+    active_crops: "Tanaman Aktif",
+    tasks_today: "Tugasan Hari Ini",
+    today_tasks: "Tugasan Utama",
+    reminders: "Peringatan",
+    active: "Aktif",
+    completed: "Selesai",
+    add_note: "Tambah Nota",
+    upload_photo: "Muat Naik Foto",
+    save: "Simpan",
+    profile: "Profil",
+    language: "Bahasa",
+    logout: "Log Keluar",
+    harvest_prediction: "Ramalan Tuai",
+    days_left: "Hari Lagi",
+    total_yield: "Jumlah Hasil",
+    upcoming: "Akan Datang",
+    healthy: "Sihat",
+    delete_confirm: "Padam item ini?",
+    water_advice: "Nasihat AI",
+    water_ok: "Kelembapan tanah baik.",
+    water_skip: "Hujan dijangka! Jangan siram.",
+    water_more: "Cuaca panas! Siram lebih.",
+    custom_crop: "Lain-lain / Tersuai",
+    enter_crop_name: "Nama Tanaman",
+    enter_days: "Hari hingga Tuai",
+    calendar_view: "Kalendar",
+    select_crop_type: "Pilih Jenis",
+    planting_date: "Tarikh Tanam",
+    current_stage: "Peringkat",
+    add_new_crop: "Tambah Tanaman",
+    edit_crop: "Kemaskini",
+    plant_crop_btn: "Tanam Sekarang",
+    update_crop_btn: "Simpan",
+    write_note: "Tulis nota...",
+    add_growth_note: "Rekod Baru",
+    quick_add: "Tambah Cepat:",
+    edit_task: "Edit Tugasan",
+    update: "Kemaskini",
+    username_placeholder: "Nama Pengguna",
+    login_title: "Ladang Saya",
+    login_subtitle: "Pengurusan Ladang Pintar",
+    email_label: "Emel",
+    password_label: "Kata Laluan",
+    name_label: "Nama",
+    login_btn: "Log Masuk",
+    signup_btn: "Daftar",
+    demo_hint: "Demo: Masukkan sebarang butiran",
+    due: "Tarikh",
+    kg: "kg",
+    harv: "Tuai",
+    add_task_btn: "Tambah",
+    task_name_placeholder: "Apa perlu dibuat?",
+    select_section: "Zon / Bahagian",
+    other_section: "Lain-lain...",
+    enter_section: "Nama Zon",
+    crop_notes: "Nota",
+    email: "Emel",
+    toggle_signup: "Tiada akaun? Daftar",
+    toggle_login: "Sudah ada akaun? Log Masuk",
+    reset_data: "Set Semula Data",
+    est_value: "Nilai",
+    currency: "RM",
+    save_profile: "Simpan Profil",
+    edit_profile: "Sunting",
+    cancel: "Batal",
+    farm_name: "Nama Ladang",
+    phone_number: "Telefon",
+    task_date: "Tarikh",
+    refresh_loc: "Kemaskini",
+    total_revenue: "Unjuran Pendapatan",
+    day_count: "Hari Ke-",
+    crop_location: "Lokasi",
+    harvest_details: "Butiran Tuai",
+    market_price: "Harga Pasaran",
+    est_revenue: "Anggaran Hasil",
+    countdown_today: "Tuai Hari Ini!",
+    countdown_future: "lagi",
+    countdown_past: "Dituai",
+    days: "hari",
+    ago: "lepas",
+    view_all: "Senarai Tuaian",
+    showing_date: "Tuaian pada",
+    monthly_forecast: "Bulan Ini",
+    revenue_breakdown: "Perincian Hasil",
+    revenue_source: "Sumber",
+    tab_upcoming: "Akan Datang",
+    tab_history: "Sejarah",
+    complete_harvest: "Selesai Tuai",
+    harvested_on: "Dituai Pada",
+    duration: "Tempoh",
+    report_id: "ID Laporan",
+    search_crops: "Cari tanaman, lokasi...",
+
+    condition_cloudy: "Mendung",
+    condition_sunny: "Panas",
+    condition_rain: "Hujan",
+    qa_water: "Siram",
+    qa_fert: "Baja",
+    qa_prune: "Cantas",
+    qa_harv: "Tuai",
+    Durian: "Durian",
+    Mango: "Mangga",
+    Watermelon: "Tembikai",
+    Papaya: "Betik",
+    Banana: "Pisang",
+    Apple: "Epal",
+    Orange: "Oren",
+    Pineapple: "Nanas",
+    Strawberry: "Strawberi",
+    Seedling: "Anak Benih",
+    Vegetative: "Vegetatif",
+    Flowering: "Berbunga",
+    Fruiting: "Berbuah"
+  },
   zh: {
+    welcome: "早上好，",
     good_morning: "早上好，",
     good_afternoon: "下午好，",
     good_evening: "晚上好，",
@@ -268,6 +399,9 @@ const TRANSLATIONS = {
     grade_b: "B果 (标准)",
     grade_c: "C果 (普通)",
     items: "棵",
+    upload_photo: "上传照片",
+    name_label: "姓名",
+    email_label: "邮箱",
     
     condition_cloudy: "多云",
     condition_sunny: "晴朗",
@@ -291,10 +425,10 @@ const INITIAL_TASKS = [
 
 // --- CROP DATABASE ---
 const CROP_TYPES = {
-  'Durian': { minDays: 120, maxDays: 130, yield: 500, price: 40, icon: '🍈', varieties: ['Musang King', 'Black Thorn', 'D24', 'Red Prawn', 'IOI'] }, 
+  'Durian': { minDays: 120, maxDays: 130, yield: 500, price: 40, icon: '🌳', varieties: ['Musang King', 'Black Thorn', 'D24', 'Red Prawn', 'IOI'] }, 
   'Mango': { minDays: 95, maxDays: 105, yield: 300, price: 8, icon: '🥭', varieties: ['Harumanis', 'Chok Anan', 'Gold Lily'] },
   'Watermelon': { minDays: 80, maxDays: 90, yield: 50, price: 3, icon: '🍉', varieties: ['Red Seedless', 'Yellow Flesh'] },
-  'Papaya': { minDays: 145, maxDays: 155, yield: 40, price: 4, icon: '🍐', varieties: ['Eksotika', 'Sekaki'] }, 
+  'Papaya': { minDays: 145, maxDays: 155, yield: 40, price: 4, icon: '🍈', varieties: ['Eksotika', 'Sekaki'] },
   'Banana': { minDays: 260, maxDays: 280, yield: 25, price: 5, icon: '🍌', varieties: ['Berangan', 'Mas', 'Cavendish'] },
   'Apple': { minDays: 115, maxDays: 125, yield: 60, price: 10, icon: '🍎' },
   'Orange': { minDays: 145, maxDays: 155, yield: 55, price: 9, icon: '🍊' },
@@ -382,6 +516,7 @@ export default function App() {
     if (savedLogin === 'true') {
         setIsLoggedIn(true);
         setUserName(localStorage.getItem('farm_username') || 'Farmer'); 
+        setUserEmail(localStorage.getItem('farm_email') || 'farmer@example.com');
     }
     return () => clearTimeout(timer);
   }, []);
@@ -445,12 +580,13 @@ export default function App() {
   const [harvestTab, setHarvestTab] = useState('upcoming'); 
   const [showMonthlyReport, setShowMonthlyReport] = useState(false); 
   const [cropSearchTerm, setCropSearchTerm] = useState(''); 
-  const [expandedGroups, setExpandedGroups] = useState({}); 
+  const [expandedGroups, setExpandedGroups] = useState({}); // New: For Grouping
 
   const [noteText, setNoteText] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
   const [isCustomCrop, setIsCustomCrop] = useState(false);
+  // NEW: Added variety to form
   const [cropForm, setCropForm] = useState({ type: 'Durian', date: new Date().toISOString().split('T')[0], stage: 'Seedling', customName: '', customDays: 90, notes: '', location: '', variety: '' });
   
   const today = new Date();
@@ -519,9 +655,10 @@ export default function App() {
     return date;
   };
 
+  // NEW: Dynamic Greeting based on time
   const getGreeting = () => {
      const hour = new Date().getHours();
-     if (hour >= 5 && hour < 12) return t('good_morning'); 
+     if (hour >= 5 && hour < 12) return t('good_morning'); // Using keys from translation
      if (hour >= 12 && hour < 18) return t('good_afternoon');
      if (hour >= 18 || hour < 5) return t('good_evening');
      return "Welcome,";
@@ -755,8 +892,22 @@ export default function App() {
     const totalRevenue = crops.reduce((acc, c) => acc + ((c.status==='harvested' ? (c.actualYield || 0) : (c.yield || 0)) * (c.price || 0)), 0);
 
     // Grouping for Growth Record (Home Summary)
-    const activeCrops = crops.filter(c => c.status !== 'harvested').slice(0, 3);
-    
+    const renderGrowthList = () => {
+        // Just show the first 3 active crops for quick access
+        const activeCrops = crops.filter(c => c.status !== 'harvested').slice(0, 3);
+        if (activeCrops.length === 0) return <div className="text-center py-10 text-gray-400 font-medium">Add crops to start tracking growth</div>;
+        
+        return (
+            <div className="flex overflow-x-auto gap-3 pb-6 hide-scrollbar px-2 snap-x">
+                {activeCrops.map((c) => (
+                    <button key={c.id} onClick={() => { setActiveTab('growth'); setActiveCropId(c.id); }} className={`snap-center shrink-0 px-6 py-3 rounded-full font-bold text-sm shadow-sm transition-all border bg-white text-gray-600 border-gray-100 hover:border-gray-300`}>
+                        {CROP_TYPES[c.name]?.icon} {t(c.name)} {c.variety && `(${c.variety})`}
+                    </button>
+                ))}
+            </div>
+        );
+    }
+
     return (
       <div className="space-y-6 pb-32 animate-slide-up">
         <style dangerouslySetInnerHTML={{__html: styles}} />
@@ -814,12 +965,12 @@ export default function App() {
           <div onClick={() => setActiveTab('crops')} className="premium-card p-6 rounded-[2rem] shadow-sm cursor-pointer group hover:bg-white transition-all">
             <div className="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center text-green-600 mb-3 group-hover:scale-110 transition-transform"><Sprout size={24}/></div>
             <div className="text-3xl font-black text-gray-800">{crops.filter(c => c.status !== 'harvested').length}</div>
-            <div className="text-xs font-bold text-gray-500 uppercase tracking-wide">{t('active_crops')}</div>
+            <div className="text-xs font-bold text-gray-400 uppercase tracking-wide">{t('active_crops')}</div>
           </div>
           <div onClick={() => setActiveTab('tasks')} className="premium-card p-6 rounded-[2rem] shadow-sm cursor-pointer group hover:bg-white transition-all">
             <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center text-orange-600 mb-3 group-hover:scale-110 transition-transform"><Check size={24}/></div>
             <div className="text-3xl font-black text-gray-800">{activeTasks.length}</div>
-            <div className="text-xs font-bold text-gray-500 uppercase tracking-wide">{t('tasks_today')}</div>
+            <div className="text-xs font-bold text-gray-400 uppercase tracking-wide">{t('tasks_today')}</div>
           </div>
         </div>
 
@@ -1015,79 +1166,6 @@ export default function App() {
     </div>
   )};
 
-  const renderGrowth = () => {
-    // Helper inside renderGrowth to avoid scope issues
-    const getLastUpdate = (crop) => {
-        if (!crop.logs || crop.logs.length === 0) return 'No records yet';
-        return crop.logs[0].date; 
-    };
-
-    // Correctly find the current crop based on ID
-    const currentCrop = crops.find(c => c.id === activeCropId);
-
-    // Grouping for Growth Record (Main View) - Only Active Crops
-    const activeCrops = crops.filter(c => c.status !== 'harvested');
-    const groupedGrowth = activeCrops.reduce((acc, crop) => {
-        if (!acc[crop.name]) acc[crop.name] = [];
-        acc[crop.name].push(crop);
-        return acc;
-    }, {});
-
-    const toggleGroup = (groupName) => {
-         setExpandedGroups(prev => ({ ...prev, [groupName]: !prev[groupName] }));
-    };
-
-    return (
-    <div className="pb-32 pt-6">
-      {!activeCropId ? (
-        <div className="animate-entry">
-            <div className="mb-8 px-4 flex justify-between items-end">
-                <div><h1 className="text-3xl font-black text-gray-900 tracking-tight">{t('growth')}</h1><p className="text-sm text-gray-500 font-medium mt-1">Select a crop to manage records</p></div>
-                <button onClick={() => setShowAddCrop(true)} className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform"><Plus size={24}/></button>
-            </div>
-            {Object.keys(groupedGrowth).length > 0 ? (
-                <div className="space-y-4">
-                    {Object.entries(groupedGrowth).map(([groupName, groupItems], i) => (
-                        <div key={groupName} className="animate-slide-up" style={{ animationDelay: `${i * 100}ms` }}>
-                             <div onClick={() => toggleGroup(groupName)} className="group-header p-5 rounded-3xl shadow-sm border border-white flex items-center justify-between cursor-pointer active:scale-98 transition-transform mb-2">
-                                <div className="flex items-center gap-4"><div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center text-2xl border border-green-200 shadow-inner">{CROP_TYPES[groupName]?.icon || '🌱'}</div><div><h3 className="font-black text-xl text-gray-900">{t(groupName) || groupName}</h3><p className="text-xs font-bold text-gray-500">{groupItems.length} {t('items')}</p></div></div>
-                                <div className={`p-2 rounded-full bg-gray-100 transition-transform ${expandedGroups[groupName] ? 'rotate-180' : ''}`}><ChevronDown size={20} className="text-gray-500"/></div>
-                            </div>
-                            {expandedGroups[groupName] && (
-                                <div className="pl-4 border-l-2 border-green-100 ml-6 space-y-3 mb-6 animate-fade-in">
-                                    {groupItems.map((crop, j) => (
-                                        <div key={crop.id} onClick={() => setActiveCropId(crop.id)} className="premium-card p-5 rounded-[2rem] shadow-sm flex items-center justify-between cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all group">
-                                            <div className="flex items-center gap-5">
-                                                <div className="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-xl shadow-inner border border-green-100 group-hover:bg-green-100 transition-colors">{CROP_TYPES[crop.name]?.icon || '🌱'}</div>
-                                                <div><h3 className="font-bold text-gray-900 text-sm">{t(crop.name)} {crop.variety && `(${crop.variety})`}</h3><div className="flex items-center gap-2 mt-1"><span className="bg-gray-100 text-gray-500 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">{t(crop.stage)}</span></div></div>
-                                            </div>
-                                            <div className="text-right"><div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Last Update</div><div className="text-xs font-bold text-green-700">{getLastUpdate(crop) === 'No records yet' ? 'Never' : getLastUpdate(crop)}</div><ChevronRight size={16} className="text-gray-300 ml-auto mt-2" /></div>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            ) : (<div className="text-center py-20 mx-4 bg-white rounded-[2.5rem] border border-dashed border-gray-200"><Sprout size={48} className="mx-auto text-gray-200 mb-4"/><p className="text-gray-400 font-medium">No crops planted yet.</p></div>)}
-        </div>
-      ) : (
-        <div className="animate-slide-up">
-            <div className="flex items-center justify-between px-2 mb-6 sticky top-0 bg-[#FAFAFA]/90 backdrop-blur-md z-10 py-2">
-                <button onClick={() => setActiveCropId(null)} className="p-3 bg-white border border-gray-200 rounded-2xl hover:bg-gray-50 text-gray-600 shadow-sm transition-all"><ChevronLeft size={20}/></button>
-                <div className="text-center"><h2 className="font-black text-xl text-gray-900">{currentCrop?.name}</h2><p className="text-xs text-green-600 font-bold uppercase tracking-widest">{t('growth')} History</p></div>
-                <button onClick={() => setShowAddLog(true)} className="p-3 bg-black text-white rounded-2xl shadow-lg hover:scale-105 transition-transform active:scale-95"><Plus size={20}/></button>
-            </div>
-            <div className="mx-4 mb-8 bg-white p-5 rounded-[2rem] border border-gray-100 shadow-sm"><div className="flex justify-between items-start mb-3"><div className="flex gap-2"><span className="text-3xl">{CROP_TYPES[currentCrop?.name]?.icon}</span><div><div className="text-xs text-gray-400 font-bold uppercase">Current Stage</div><div className="text-sm font-bold text-gray-900 flex items-center gap-1 cursor-pointer hover:text-green-600" onClick={() => { const stages = ['Seedling', 'Vegetative', 'Flowering', 'Fruiting']; const nextIndex = (stages.indexOf(currentCrop.stage) + 1) % 4; updateCropStage(stages[nextIndex]); }}>{currentCrop?.stage} <RefreshCw size={12}/></div></div></div><div className="text-right"><div className="text-xs text-gray-400 font-bold uppercase">{t('day_count')}</div><div className="text-2xl font-black text-green-600">{getDaysSincePlanted(currentCrop?.plantedDate)}</div></div></div>{currentCrop?.description && (<div className="pt-3 border-t border-dashed border-gray-100 text-xs text-gray-500 leading-relaxed bg-yellow-50/50 p-2 rounded-xl mt-2"><span className="font-bold text-yellow-600 uppercase mr-1">Note:</span>{currentCrop.description}</div>)}</div>
-            <div className="space-y-8 px-4 border-l-2 border-dashed border-gray-200 ml-6 pb-12">
-                {currentCrop?.logs?.length > 0 ? (currentCrop?.logs?.map((log, i) => (<div key={log.id} className="relative pl-8 group animate-slide-up" style={{ animationDelay: `${i * 100}ms` }}><div className="absolute -left-[9px] top-0 w-4 h-4 bg-white border-4 border-green-500 rounded-full shadow-sm z-10"></div><div className="flex justify-between items-start mb-2"><div className="flex flex-col"><span className="text-sm font-bold text-gray-900">{log.date}</span><span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{log.time}</span></div><button onClick={(e) => { e.stopPropagation(); deleteGrowthLog(activeCropId, log.id); }} className="p-2 bg-red-50 text-red-500 rounded-full hover:bg-red-100 transition-colors shadow-sm"><Trash2 size={14}/></button></div><div className="bg-white p-5 rounded-[2rem] shadow-sm border border-gray-100">{log.image && (<div className="rounded-2xl overflow-hidden shadow-inner border border-gray-100 mb-4 h-48 w-full"><img src={log.image} className="w-full h-full object-cover" alt="Growth" /></div>)}<p className="text-base text-gray-800 leading-relaxed font-medium">{log.text}</p></div></div>))) : (<div className="text-center py-10 opacity-60"><div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white shadow-sm"><Camera size={32} className="text-gray-300"/></div><p className="text-sm font-bold text-gray-500">Time to start tracking!</p><p className="text-xs text-gray-400 mt-1">Take a photo to record current stage.</p></div>)}
-            </div>
-        </div>
-      )}
-    </div>
-    );
-  };
-
   const renderHarvest = () => {
     // 🌾 NEW: Harvest Countdown Logic
     const getDaysUntilHarvest = (harvestDate) => {
@@ -1244,6 +1322,34 @@ export default function App() {
         </div>
     )};
 
+    // --- MONTHLY REPORT MODAL ---
+    const MonthlyReportModal = ({ onClose }) => {
+        const monthlyData = {};
+        crops.filter(c => c.status === 'harvested').forEach(c => {
+             const date = new Date(c.harvestedDate);
+             const key = `${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`;
+             if(!monthlyData[key]) monthlyData[key] = 0;
+             monthlyData[key] += ((c.actualYield || 0) * (c.price || 0));
+        });
+
+        return (
+            <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-[100] p-4 animate-fade-in" onClick={onClose}>
+                <div className="bg-white w-full max-w-sm rounded-[2.5rem] p-6 shadow-2xl relative animate-slide-up" onClick={e => e.stopPropagation()}>
+                     <button onClick={onClose} className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200"><X size={16}/></button>
+                     <h2 className="text-2xl font-black text-gray-900 mb-6">{t('monthly_report')}</h2>
+                     <div className="space-y-3">
+                         {Object.keys(monthlyData).length > 0 ? Object.keys(monthlyData).map(month => (
+                             <div key={month} className="flex justify-between items-center p-4 bg-green-50 rounded-2xl border border-green-100">
+                                 <span className="font-bold text-gray-800">{month}</span>
+                                 <span className="font-black text-green-700">RM {monthlyData[month].toLocaleString()}</span>
+                             </div>
+                         )) : <div className="text-center text-gray-400 py-8">No harvested data yet.</div>}
+                     </div>
+                </div>
+            </div>
+        )
+    };
+
     return (
     <div className="pb-32 pt-6 animate-slide-up">
       {/* HARVEST DETAIL POPUP */}
@@ -1376,93 +1482,244 @@ export default function App() {
     </div>
   )};
 
+  // --- 修复：添加缺失的 renderGrowth 函数 ---
+  const renderGrowth = () => {
+    const activeCrop = crops.find(c => c.id === activeCropId);
+
+    return (
+      <div className="pb-32 pt-6 animate-slide-up">
+        {/* HEADER */}
+        <div className="flex justify-between items-center mb-6 px-2">
+           <h1 className="text-4xl font-black text-gray-900 tracking-tight">{t('growth')}</h1>
+           {activeCrop && (
+             <button onClick={() => setActiveCropId(null)} className="text-xs font-bold text-gray-400 bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
+               Back to List
+             </button>
+           )}
+        </div>
+
+        {/* CROP SELECTOR (If no crop selected) */}
+        {!activeCrop && (
+          <div className="space-y-4">
+             {crops.filter(c => c.status !== 'harvested').length === 0 ? (
+                <div className="text-center py-20 opacity-50">
+                    <Sprout size={64} className="mx-auto text-gray-300 mb-4"/>
+                    <p className="font-bold text-gray-400">No active crops to track.</p>
+                </div>
+             ) : (
+                <div className="grid grid-cols-2 gap-4">
+                  {crops.filter(c => c.status !== 'harvested').map(c => (
+                    <div key={c.id} onClick={() => setActiveCropId(c.id)} className="premium-card p-6 rounded-[2rem] shadow-sm hover:shadow-lg cursor-pointer transition-all active:scale-95 group">
+                        <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">{CROP_TYPES[c.name]?.icon || '🌱'}</div>
+                        <h3 className="font-bold text-gray-900 text-lg leading-tight">{t(c.name)}</h3>
+                        <p className="text-xs text-gray-400 font-bold uppercase tracking-wide mt-1">{c.location || 'No Location'}</p>
+                        <div className="mt-4 flex items-center gap-2">
+                           <span className="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-md">{t(c.stage)}</span>
+                        </div>
+                    </div>
+                  ))}
+                </div>
+             )}
+          </div>
+        )}
+
+        {/* JOURNAL DETAILS (If crop selected) */}
+        {activeCrop && (
+          <div className="animate-slide-up">
+             {/* STAGE STEPPER */}
+             <div className="bg-white p-6 rounded-[2.5rem] shadow-sm mb-6 overflow-x-auto hide-scrollbar">
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 text-center">Current Stage</h3>
+                <div className="flex items-center justify-between min-w-[300px] gap-2">
+                   {['Seedling', 'Vegetative', 'Flowering', 'Fruiting'].map((s, i) => {
+                      const isActive = activeCrop.stage === s;
+                      const isPast = ['Seedling', 'Vegetative', 'Flowering', 'Fruiting'].indexOf(activeCrop.stage) > i;
+                      return (
+                        <button key={s} onClick={() => updateCropStage(s)} className={`flex-1 flex flex-col items-center gap-2 group`}>
+                           <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all ${isActive ? 'bg-green-600 border-green-600 text-white scale-110' : isPast ? 'bg-green-100 border-green-100 text-green-600' : 'border-gray-100 text-gray-300'}`}>
+                              {isPast ? <Check size={14}/> : <div className="w-2 h-2 rounded-full bg-current"/>}
+                           </div>
+                           <span className={`text-[10px] font-bold ${isActive ? 'text-green-800' : 'text-gray-300'}`}>{t(s)}</span>
+                        </button>
+                      )
+                   })}
+                </div>
+             </div>
+
+             {/* ADD NOTE BUTTON */}
+             <button onClick={() => setShowAddLog(true)} className="w-full bg-black text-white py-5 rounded-[2rem] font-bold text-lg shadow-xl flex items-center justify-center gap-3 mb-8 hover:scale-[1.02] transition-transform">
+                <Camera size={24} /> {t('add_note')}
+             </button>
+
+             {/* LOGS TIMELINE */}
+             <div className="space-y-6 pl-4 border-l-2 border-gray-100 ml-4 relative">
+                {activeCrop.logs && activeCrop.logs.length > 0 ? activeCrop.logs.map((log, idx) => (
+                  <div key={log.id} className="relative animate-slide-up" style={{animationDelay: `${idx * 100}ms`}}>
+                     <div className="absolute -left-[25px] top-0 w-4 h-4 rounded-full bg-green-500 border-4 border-white shadow-sm"></div>
+                     <div className="bg-white p-5 rounded-3xl shadow-sm border border-gray-50 group">
+                        <div className="flex justify-between items-start mb-3">
+                           <div>
+                              <span className="text-xs font-black text-gray-900 block">{log.date}</span>
+                              <span className="text-[10px] font-bold text-gray-400 uppercase">{log.time}</span>
+                           </div>
+                           <button onClick={() => deleteGrowthLog(activeCrop.id, log.id)} className="text-gray-300 hover:text-red-500 transition-colors"><Trash2 size={16}/></button>
+                        </div>
+                        <p className="text-gray-700 font-medium text-sm leading-relaxed">{log.text}</p>
+                        {log.image && (
+                          <div className="mt-3 rounded-2xl overflow-hidden shadow-md">
+                            <img src={log.image} alt="Log" className="w-full h-auto object-cover" />
+                          </div>
+                        )}
+                     </div>
+                  </div>
+                )) : (
+                  <div className="text-gray-400 text-sm font-medium italic pl-4 py-4">No records yet. Start writing!</div>
+                )}
+             </div>
+          </div>
+        )}
+
+        {/* ADD LOG MODAL */}
+        {showAddLog && (
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-4 animate-fade-in">
+             <div className="bg-white w-full max-w-sm rounded-[2.5rem] p-6 shadow-2xl animate-slide-up">
+                <div className="flex justify-between items-center mb-6">
+                   <h3 className="font-black text-xl text-gray-900">{t('add_growth_note')}</h3>
+                   <button onClick={() => {setShowAddLog(false); setSelectedImage(null); setNoteText('');}} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200"><X size={20}/></button>
+                </div>
+                
+                <textarea 
+                  className="w-full bg-gray-50 border-0 rounded-3xl p-5 h-32 text-gray-800 font-medium focus:ring-2 focus:ring-green-500 outline-none resize-none mb-4 text-lg" 
+                  placeholder={t('write_note')}
+                  value={noteText}
+                  onChange={(e) => setNoteText(e.target.value)}
+                />
+                
+                <div className="mb-6">
+                   <label onClick={() => fileInputRef.current.click()} className="w-full h-32 border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-50 hover:border-green-300 transition-all">
+                      {selectedImage ? (
+                        <img src={selectedImage} className="h-full w-full object-cover rounded-[1.4rem]" alt="Preview" />
+                      ) : (
+                        <>
+                          <ImageIcon size={32} className="mb-2"/>
+                          <span className="text-xs font-bold uppercase tracking-wider">{t('upload_photo')}</span>
+                        </>
+                      )}
+                   </label>
+                   <input type="file" ref={fileInputRef} onChange={(e) => handleImageSelect(e, setSelectedImage)} className="hidden" accept="image/*" />
+                </div>
+
+                <button onClick={addGrowthLog} className="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-xl shadow-green-200 hover:scale-[1.02] transition-transform">
+                   {t('save')}
+                </button>
+             </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   const renderSettings = () => {
     return (
-      <div className="pb-32 pt-6 animate-entry">
+      <div className="pb-32 pt-6 animate-slide-up">
         <div className="mb-8 px-2"><h1 className="text-4xl font-black text-gray-900 tracking-tight">{t('settings')}</h1></div>
         
-        {/* EDITABLE PROFILE SECTION */}
-        <div className="premium-card p-6 rounded-[2.5rem] shadow-sm mb-6">
-            <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-green-100 text-green-700 rounded-full flex items-center justify-center border-2 border-white shadow-sm"><User size={24} /></div>
+        {/* PROFILE CARD */}
+        <div className="premium-card p-6 rounded-[2.5rem] shadow-sm mb-6 border border-white/60">
+            <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 text-white rounded-full flex items-center justify-center shadow-lg border-4 border-white">
+                      <User size={30} />
+                    </div>
                     <div>
-                        <h2 className="font-bold text-lg text-gray-900">{userName}</h2>
-                        <p className="text-xs text-gray-400">{userEmail}</p>
+                        <h2 className="font-black text-xl text-gray-900 leading-tight">{userName}</h2>
+                        <span className="inline-block bg-green-100 text-green-800 text-[10px] font-bold px-2 py-0.5 rounded-md mt-1">PRO MEMBER</span>
                     </div>
                 </div>
                 {!isEditingProfile && (
-                    <button onClick={() => setIsEditingProfile(true)} className="px-4 py-2 bg-black text-white text-xs font-bold rounded-xl shadow-md active:scale-95 transition-transform">{t('edit_profile')}</button>
+                    <button onClick={() => setIsEditingProfile(true)} className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center shadow-md hover:scale-110 transition-transform">
+                      <Edit2 size={18} />
+                    </button>
                 )}
             </div>
 
             {isEditingProfile ? (
-                <div className="space-y-4 animate-fade-in">
+                <div className="space-y-4 animate-fade-in bg-gray-50/50 p-4 rounded-3xl border border-dashed border-gray-200">
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-2">Edit Profile</p>
+                    
+                    {/* Username Input */}
                     <div>
-                        <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t('name_label')}</label>
-                        <div className="relative">
-                            <User size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
-                            <input type="text" className="w-full bg-gray-50 pl-9 pr-4 py-3 rounded-xl text-sm font-bold text-gray-900 border-2 border-transparent focus:border-green-500 outline-none transition-all" value={userName} onChange={(e) => setUserName(e.target.value)} />
-                        </div>
+                        <label className="text-[10px] font-bold text-gray-400 uppercase ml-3 mb-1 block">{t('name_label')}</label>
+                        <input type="text" className="w-full bg-white pl-4 pr-4 py-3 rounded-2xl text-sm font-bold text-gray-900 border border-gray-100 focus:ring-2 focus:ring-green-500 outline-none" value={userName} onChange={(e) => setUserName(e.target.value)} />
                     </div>
+                    
+                    {/* Email Input */}
                     <div>
-                        <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t('email_label')}</label>
-                        <div className="relative">
-                            <Mail size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
-                            <input type="email" className="w-full bg-gray-50 pl-9 pr-4 py-3 rounded-xl text-sm font-medium text-gray-900 border-2 border-transparent focus:border-green-500 outline-none transition-all" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
-                        </div>
+                        <label className="text-[10px] font-bold text-gray-400 uppercase ml-3 mb-1 block">{t('email_label')}</label>
+                        <input type="email" className="w-full bg-white pl-4 pr-4 py-3 rounded-2xl text-sm font-bold text-gray-900 border border-gray-100 focus:ring-2 focus:ring-green-500 outline-none" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
                     </div>
+                    
+                    {/* Farm Name Input */}
                     <div>
-                        <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t('farm_name')}</label>
-                        <div className="relative">
-                            <Briefcase size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
-                            <input type="text" className="w-full bg-gray-50 pl-9 pr-4 py-3 rounded-xl text-sm font-medium text-gray-900 border-2 border-transparent focus:border-green-500 outline-none transition-all" value={farmName} onChange={(e) => setFarmName(e.target.value)} />
-                        </div>
+                        <label className="text-[10px] font-bold text-gray-400 uppercase ml-3 mb-1 block">{t('farm_name')}</label>
+                        <input type="text" className="w-full bg-white pl-4 pr-4 py-3 rounded-2xl text-sm font-bold text-gray-900 border border-gray-100 focus:ring-2 focus:ring-green-500 outline-none" value={farmName} onChange={(e) => setFarmName(e.target.value)} />
                     </div>
+
+                    {/* NEW: Phone Input */}
                     <div>
-                        <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t('phone_number')}</label>
-                        <div className="relative">
-                            <Phone size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"/>
-                            <input type="text" className="w-full bg-gray-50 pl-9 pr-4 py-3 rounded-xl text-sm font-medium text-gray-900 border-2 border-transparent focus:border-green-500 outline-none transition-all" value={phone} onChange={(e) => setPhone(e.target.value)} />
-                        </div>
+                        <label className="text-[10px] font-bold text-gray-400 uppercase ml-3 mb-1 block">{t('phone_number')}</label>
+                        <input type="text" className="w-full bg-white pl-4 pr-4 py-3 rounded-2xl text-sm font-bold text-gray-900 border border-gray-100 focus:ring-2 focus:ring-green-500 outline-none" value={phone} onChange={(e) => setPhone(e.target.value)} />
                     </div>
-                    <div className="flex gap-2 pt-2">
-                        <button onClick={() => setIsEditingProfile(false)} className="flex-1 py-3 bg-white border-2 border-gray-100 text-gray-500 rounded-xl text-xs font-bold hover:bg-gray-50">{t('cancel')}</button>
-                        <button onClick={handleSaveProfile} className="flex-1 py-3 bg-green-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-green-200 hover:bg-green-700">{t('save_profile')}</button>
+
+                    <div className="flex gap-2 pt-4">
+                        <button onClick={() => setIsEditingProfile(false)} className="flex-1 py-3 bg-gray-200 text-gray-600 rounded-xl text-xs font-bold hover:bg-gray-300">{t('cancel')}</button>
+                        <button onClick={handleSaveProfile} className="flex-1 py-3 bg-green-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-green-200">{t('save_profile')}</button>
                     </div>
                 </div>
             ) : (
-                <div className="space-y-4 pt-2 border-t border-dashed border-gray-200">
-                    <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-400 font-medium">{t('farm_name')}</span>
-                        <span className="text-sm font-bold text-gray-800">{farmName}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-400 font-medium">{t('phone_number')}</span>
-                        <span className="text-sm font-bold text-gray-800">{phone}</span>
-                    </div>
+                <div className="space-y-4">
+                     <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                           <span className="text-[10px] text-gray-400 font-bold uppercase block mb-1">{t('farm_name')}</span>
+                           <span className="text-sm font-bold text-gray-900 truncate block">{farmName}</span>
+                        </div>
+                        <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                           <span className="text-[10px] text-gray-400 font-bold uppercase block mb-1">{t('phone_number')}</span>
+                           <span className="text-sm font-bold text-gray-900 truncate block">{phone}</span>
+                        </div>
+                     </div>
+                     <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 flex items-center gap-3">
+                        <div className="bg-white p-2 rounded-full"><Mail size={16} className="text-gray-400"/></div>
+                        <span className="text-sm font-bold text-gray-900 truncate">{userEmail || 'No email set'}</span>
+                     </div>
                 </div>
             )}
         </div>
 
-        <div className="premium-card p-8 rounded-[2.5rem] shadow-sm mb-10">
-            <h4 className="text-xs font-bold text-gray-400 mb-5 flex items-center gap-2 uppercase tracking-widest ml-1"><Globe size={14}/> {t('language')}</h4>
-            <div className="flex gap-3">
+        {/* LANGUAGE SETTINGS */}
+        <div className="premium-card p-6 rounded-[2.5rem] shadow-sm mb-8">
+            <h4 className="text-xs font-bold text-gray-400 mb-4 flex items-center gap-2 uppercase tracking-widest ml-1"><Globe size={14}/> {t('language')}</h4>
+            <div className="flex bg-gray-50 p-1.5 rounded-2xl">
                 {['en', 'ms', 'zh'].map(l => (
-                    <button key={l} onClick={() => setLang(l)} className={`flex-1 py-4 rounded-2xl text-sm font-bold transition-all shadow-sm ${lang === l ? 'bg-black text-white shadow-xl scale-105' : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-100'}`}>
-                        {l === 'en' ? 'English' : l === 'ms' ? 'Melayu' : '中文'}
+                    <button key={l} onClick={() => setLang(l)} className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all ${lang === l ? 'bg-white text-green-700 shadow-md transform scale-100' : 'text-gray-400 hover:text-gray-600'}`}>
+                        {l === 'en' ? 'ENG' : l === 'ms' ? 'BM' : '中文'}
                     </button>
                 ))}
             </div>
         </div>
         
-        {/* DANGER ZONE AT BOTTOM */}
-        <div className="space-y-3">
-            <button onClick={handleResetData} className="w-full bg-red-50 text-red-500 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-red-100 transition-all shadow-sm"><RefreshCw size={18} /> {t('reset_data')}</button>
-            <button onClick={handleLogout} className="w-full bg-white border-2 border-gray-100 text-gray-400 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-gray-50 hover:border-gray-200 transition-all shadow-sm"><LogOut size={18} /> {t('logout')}</button>
+        {/* DANGER ZONE / ACTIONS */}
+        <div className="space-y-3 px-2">
+            <button onClick={handleResetData} className="w-full bg-white border border-red-100 text-red-500 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-red-50 transition-all text-sm">
+              <Trash2 size={16} /> {t('reset_data')}
+            </button>
+            <button onClick={handleLogout} className="w-full bg-gray-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-black transition-all text-sm shadow-lg">
+              <LogOut size={16} /> {t('logout')}
+            </button>
         </div>
         
-        <div className="text-center mt-12 text-xs font-medium text-gray-300 pb-10">Farm Manager v4.4 Pro</div>
+        <div className="text-center mt-12 text-[10px] font-bold text-gray-300 pb-10 uppercase tracking-widest">
+           Farm Manager Pro v4.2 <br/> Build 2024.12
+        </div>
       </div>
     );
   };
