@@ -634,9 +634,16 @@ export default function App() {
   // --- HANDLERS ---
   const handleLogin = (e) => {
       e.preventDefault();
-      if (userEmail && password && (isSignUp ? userName : true)) {
+      // FIX: Changed 'userEmail' to 'userName' to match the form input
+      if (userName && password) {
           setIsLoggedIn(true);
           localStorage.setItem('farm_loggedin', 'true');
+          
+          // Set default email if missing
+          const emailToSave = userEmail || 'farmer@example.com';
+          localStorage.setItem('farm_email', emailToSave);
+          setUserEmail(emailToSave);
+
           setUserName(isSignUp ? userName : (localStorage.getItem('farm_username') || 'Farmer'));
           setActiveTab('home');
       }
@@ -843,19 +850,19 @@ export default function App() {
 
   // --- SPLASH SCREEN ---
   if (showSplash) {
-     return (
-       <div className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden font-sans bg-black">
-         <div className="absolute inset-0 z-0 bg-cover bg-center opacity-80" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=3200&auto=format&fit=crop')" }}></div>
-         <div className="absolute inset-0 z-0 bg-gradient-to-t from-green-950 via-green-900/60 to-black/30 animate-pulse"></div>
-         <div className="relative z-10 text-center animate-slide-up">
-             <div className="w-28 h-28 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-8 shadow-2xl border border-white/20 ring-4 ring-green-400/20 animate-breathe">
-                 <Sprout size={56} className="text-white drop-shadow-md" />
-             </div>
-             <h1 className="text-5xl font-black text-white tracking-tight drop-shadow-lg mb-3">Farm Manager</h1>
-             <p className="text-green-100/80 font-bold text-lg tracking-wide">Cultivating Excellence.</p>
-         </div>
-       </div>
-     )
+      return (
+        <div className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden font-sans bg-black">
+          <div className="absolute inset-0 z-0 bg-cover bg-center opacity-80" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=3200&auto=format&fit=crop')" }}></div>
+          <div className="absolute inset-0 z-0 bg-gradient-to-t from-green-950 via-green-900/60 to-black/30 animate-pulse"></div>
+          <div className="relative z-10 text-center animate-slide-up">
+              <div className="w-28 h-28 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-8 shadow-2xl border border-white/20 ring-4 ring-green-400/20 animate-breathe">
+                  <Sprout size={56} className="text-white drop-shadow-md" />
+              </div>
+              <h1 className="text-5xl font-black text-white tracking-tight drop-shadow-lg mb-3">Farm Manager</h1>
+              <p className="text-green-100/80 font-bold text-lg tracking-wide">Cultivating Excellence.</p>
+          </div>
+        </div>
+      )
   }
 
   // --- RENDER LOGIN SCREEN ---
